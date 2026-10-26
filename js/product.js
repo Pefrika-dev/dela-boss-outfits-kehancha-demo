@@ -130,7 +130,7 @@
               '<span class="option-label" id="productQtyLabel">Quantity</span>' +
               '<div class="qty-stepper" role="group" aria-labelledby="productQtyLabel">' +
                 '<button type="button" data-qty-minus aria-label="Decrease quantity">' + DB.icon('minus') + '</button>' +
-                '<input id="productQty" name="quantity" type="number" min="1" max="' + Math.max(1, available) + '" value="1" inputmode="numeric"' + (soldOut ? ' disabled' : '') + '>' +
+                '<input id="productQty" name="quantity" type="number" min="1" max="' + Math.max(1, available) + '" value="1" inputmode="numeric" aria-labelledby="productQtyLabel"' + (soldOut ? ' disabled' : '') + '>' +
                 '<button type="button" data-qty-plus aria-label="Increase quantity">' + DB.icon('plus') + '</button>' +
               '</div>' +
             '</div>' +
@@ -235,12 +235,12 @@
     const title = product.name + ' | DE LA BOSS OUTFITS Concept';
     const description = product.description.slice(0, 155).trim();
     const image = (product.images && product.images[0]) || 'assets/images/editorial/hero.jpg';
-    const url = 'https://your-domain.example/product.html?id=' + encodeURIComponent(product.id);
+    const url = 'https://dela-boss-outfits-kehancha-demo.netlify.app/product.html?id=' + encodeURIComponent(product.id);
     document.title = title;
     setMeta('meta[name="description"]', description);
     setMeta('meta[property="og:title"]', title);
     setMeta('meta[property="og:description"]', description);
-    setMeta('meta[property="og:image"]', 'https://your-domain.example/' + image);
+    setMeta('meta[property="og:image"]', 'https://dela-boss-outfits-kehancha-demo.netlify.app/' + image);
     setMeta('meta[property="og:url"]', url);
     setMeta('meta[name="twitter:title"]', title);
     setMeta('meta[name="twitter:description"]', description);

@@ -302,7 +302,7 @@
   function colorsSummary(product) {
     const colors = Array.isArray(product.colors) ? product.colors : [];
     if (!colors.length) return '';
-    return '<div class="product-card__colors" aria-label="' + escapeAttr(colors.length + ' colour option' + (colors.length === 1 ? '' : 's')) + '">' +
+    return '<div class="product-card__colors" role="group" aria-label="' + escapeAttr(colors.length + ' colour option' + (colors.length === 1 ? '' : 's')) + '">' +
       '<span class="swatch-row">' + colors.slice(0, 3).map(function (color) {
         return '<span class="swatch swatch--small" style="--swatch:' + escapeAttr(colorHex(color.name)) + '"></span>';
       }).join('') + '</span>' +

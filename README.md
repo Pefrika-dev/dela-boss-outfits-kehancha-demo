@@ -63,7 +63,7 @@ Upload the whole folder to Netlify, Cloudflare Pages, GitHub Pages, Vercel or or
 | `admin.html` | Demonstration admin dashboard |
 | `404.html` | Custom not-found page |
 
-Every public page includes unique title/description metadata, canonical placeholders (`https://your-domain.example/...`), Open Graph placeholders and `noindex, nofollow` so the demo is not mistaken for the live business site.
+Every public page includes unique title/description metadata, canonical URLs on the live Netlify domain, Open Graph tags and `index, follow`. Transactional/demo-only pages (`cart.html`, `checkout.html`, `product.html`, `admin.html`, `404.html`) stay `noindex, nofollow`. `robots.txt` and `sitemap.xml` are included at the project root.
 
 ---
 
@@ -277,7 +277,7 @@ The default is `+254758102552`, as supplied for this proposal.
 - **LocalStorage size limits** (typically ~5 MB) constrain uploaded images and catalogue size.
 - **Sample data only.** Prices, stock, product names and orders are illustrative.
 - **Unverified business details.** Anything not supplied for the proposal is omitted or marked as to be confirmed.
-- **Static asset placeholders.** Canonical URLs and Open Graph images use `your-domain.example` and must be replaced.
+- **Hosting metadata.** Canonical URLs and Open Graph tags currently point to the Netlify demo domain. Change them to the production custom domain before launch.
 - **Image licensing.** Pexels images are suitable for the concept demo, but the business should confirm final product photography rights before launch.
 
 ---
@@ -289,8 +289,8 @@ Before this concept becomes a live shop:
 1. Replace every sample product, price, description and stock figure with confirmed business data.
 2. Replace stock/editorial imagery with the shop's own photography and obtain usage rights.
 3. Set the real WhatsApp number, phone numbers, location wording and any real email/social details in Settings and page copy.
-4. Replace canonical and Open Graph placeholders; add a real domain, sitemap and analytics only with consent.
-5. Remove `noindex, nofollow` from public pages once the site is approved for indexing.
+4. Point canonical URLs, `sitemap.xml` and `robots.txt` at the production domain, then resubmit the sitemap in Google Search Console.
+5. Keep the transactional pages `noindex`; only the public marketing pages should be indexed.
 6. Move the catalogue, orders and settings to a real backend/database.
 7. Add authentication and role-based access for the admin dashboard.
 8. Integrate a verified payment method and a real order-notification workflow if required.

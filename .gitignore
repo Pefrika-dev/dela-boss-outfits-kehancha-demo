@@ -8,3 +8,6 @@ Desktop.ini
 # Local tooling
 node_modules/
 *.log
+
+# Local Netlify folder
+.netlify

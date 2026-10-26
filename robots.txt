@@ -1,0 +1,13 @@
+# DE LA BOSS OUTFITS — independent website concept
+# Public pages are indexable. Transactional and demo-only pages are not.
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /product.html
+Disallow: /404.html
+Disallow: /.netlify/
+
+Sitemap: https://dela-boss-outfits-kehancha-demo.netlify.app/sitemap.xml
