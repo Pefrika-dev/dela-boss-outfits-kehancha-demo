@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-KE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop the Sample Collection | DE LA BOSS OUTFITS Concept</title>
+  <meta name="description" content="Browse the demonstration collection for DE LA BOSS OUTFITS: sample clothing, shoes and accessories with search, category, size, colour and price filters.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://your-domain.example/shop.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shop the Sample Collection | DE LA BOSS OUTFITS">
+  <meta property="og:description" content="Search and filter the DE LA BOSS OUTFITS demonstration catalogue. Sample products and prices.">
+  <meta property="og:image" content="https://your-domain.example/assets/images/editorial/hero.jpg">
+  <meta property="og:url" content="https://your-domain.example/shop.html">
+  <meta property="og:locale" content="en_KE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#171512">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/shop.js" defer></script>
+</head>
+<body data-page="shop">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announcement" data-announcement-bar>
+    <div class="container announcement__inner">
+      <span class="announcement__location">KEHANCHA · MIGORI COUNTY</span>
+      <span class="announcement__message" data-announcement-text>YOUR STYLE. YOUR STATEMENT.</span>
+      <span class="announcement__demo">CONCEPT STOREFRONT</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <button class="icon-btn menu-toggle" type="button" data-open-menu aria-label="Open navigation" aria-haspopup="dialog">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="wordmark" href="index.html" aria-label="DE LA BOSS OUTFITS home">
+        <span class="wordmark__main">DE LA BOSS</span>
+        <span class="wordmark__sub">OUTFITS</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html" aria-current="page">Shop</a>
+        <a href="shop.html?filter=new">New Arrivals</a>
+        <a href="shop.html?group=clothing">Clothing</a>
+        <a href="shop.html?category=Shoes">Shoes</a>
+        <a href="shop.html?category=Accessories">Accessories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header__actions">
+        <button class="icon-btn" type="button" data-open-search aria-label="Search the sample collection" aria-haspopup="dialog">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        </button>
+        <a class="icon-btn bag-link" href="cart.html" data-cart-label aria-label="Shopping bag, 0 items">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          <span class="bag-count is-empty" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-main">
+    <section class="page-header shop-header">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Shop</li>
+          </ol>
+        </nav>
+        <div class="shop-header__meta">
+          <div>
+            <p class="eyebrow">The sample collection</p>
+            <h1>THE COLLECTION.</h1>
+          </div>
+          <p class="shop-header__intro">A demonstration catalogue built to show how a local fashion retailer could present clothing, shoes and accessories online. Search, filter and build a sample bag.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="shop-toolbar-wrap">
+      <div class="container shop-toolbar">
+        <div class="shop-toolbar__left">
+          <button class="filter-toggle" type="button" data-open-filters aria-expanded="false" aria-controls="filtersPanel">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>
+            Filter
+            <span class="filter-count" data-filter-count hidden>0</span>
+          </button>
+          <div class="shop-search" data-shop-search>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+            <label class="visually-hidden" for="shopSearch">Search products by name</label>
+            <input id="shopSearch" type="search" placeholder="Search the collection" autocomplete="off">
+            <button class="shop-search__clear" type="button" data-clear-search aria-label="Clear search">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="shop-toolbar__right">
+          <span class="result-count" id="resultCount" aria-live="polite">Loading…</span>
+          <div class="sort-control">
+            <label for="sortSelect">Sort</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-layout container">
+      <aside class="filters" id="filtersPanel" aria-label="Product filters">
+        <div class="filter-drawer-head">
+          <h2 class="display-title">Filter</h2>
+          <button class="icon-btn" type="button" data-close-filters aria-label="Close filters">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <div class="filters__top">
+          <h2>Filter by</h2>
+          <button class="filters__clear" type="button" data-clear-all>Clear all</button>
+        </div>
+        <form id="filterForm">
+          <div class="filter-group">
+            <h3>Category</h3>
+            <div class="filter-options" id="categoryFilters"></div>
+          </div>
+          <div class="filter-group">
+            <h3>Price range</h3>
+            <div class="price-options" id="priceFilters">
+              <label class="filter-range"><input type="radio" name="priceRange" value=""> Any price</label>
+              <label class="filter-range"><input type="radio" name="priceRange" value="0-2500"> Under KSh 2,500</label>
+              <label class="filter-range"><input type="radio" name="priceRange" value="2500-4500"> KSh 2,500 – 4,500</label>
+              <label class="filter-range"><input type="radio" name="priceRange" value="4500-6500"> KSh 4,500 – 6,500</label>
+              <label class="filter-range"><input type="radio" name="priceRange" value="6500-999999"> KSh 6,500 and above</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h3>Size</h3>
+            <div class="filter-options" id="sizeFilters"></div>
+          </div>
+          <div class="filter-group">
+            <h3>Colour</h3>
+            <div class="filter-options" id="colourFilters"></div>
+          </div>
+          <div class="filter-group">
+            <h3>Edit</h3>
+            <div class="filter-options">
+              <label class="filter-check"><input type="checkbox" name="edit" value="new"><span>New arrivals</span></label>
+              <label class="filter-check"><input type="checkbox" name="edit" value="sale"><span>Sample sale</span></label>
+            </div>
+          </div>
+        </form>
+        <div style="padding-top:20px">
+          <button class="btn btn--dark btn--full btn--small" type="button" data-apply-filters>View results <span data-filter-result-count></span></button>
+        </div>
+      </aside>
+
+      <div class="filter-backdrop" data-close-filters aria-hidden="true"></div>
+
+      <section class="shop-results" aria-labelledby="results-title">
+        <h2 class="visually-hidden" id="results-title">Product results</h2>
+        <div class="active-filters" id="activeFilters"></div>
+        <p class="shop-notice">Demonstration catalogue: product names, prices, imagery and stock are sample data, not confirmed shop inventory. Prices are shown in Kenyan Shillings.</p>
+        <div class="product-grid shop-grid" id="productResults" aria-live="polite" aria-busy="true">
+          <p class="shop-no-js">Loading sample products…</p>
+        </div>
+        <div class="empty-state shop-empty" id="shopEmpty" hidden>
+          <div class="empty-state__icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+          </div>
+          <h2>No pieces match that search.</h2>
+          <p>Try a different product name, remove a filter, or clear everything to return to the full sample collection.</p>
+          <button class="btn" type="button" data-clear-all>Clear all filters</button>
+        </div>
+        <div class="shop-load-wrap">
+          <p class="shop-load-note" id="loadNote"></p>
+          <button class="btn btn--ghost" type="button" id="loadMoreBtn" hidden>Load more pieces</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="wordmark" href="index.html" aria-label="DE LA BOSS OUTFITS home">
+            <span class="wordmark__main">DE LA BOSS</span>
+            <span class="wordmark__sub">OUTFITS</span>
+          </a>
+          <p>Clothing and fashion retail. An independent digital storefront concept exploring a more considered way to discover and enquire.</p>
+          <p class="footer__location">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Kehancha, Migori County, Kenya
+          </p>
+        </div>
+        <div class="footer__col">
+          <h3>Explore</h3>
+          <div class="footer__links">
+            <a href="shop.html">Shop all</a>
+            <a href="shop.html?filter=new">New arrivals</a>
+            <a href="about.html">About the store</a>
+            <a href="contact.html">Contact</a>
+            <a href="admin.html">Admin demo</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <div class="footer__links">
+            <a href="shop.html?category=Men">Men's fashion</a>
+            <a href="shop.html?category=Women">Women's fashion</a>
+            <a href="shop.html?category=Shoes">Shoes</a>
+            <a href="shop.html?category=Accessories">Accessories</a>
+            <a href="shop.html?category=Essentials">Everyday essentials</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Talk to the store</h3>
+          <div class="footer__contact">
+            <a href="tel:+254758102552" data-phone-primary data-phone-label>+254 758 102 552</a>
+            <a href="tel:+254707421337" data-phone-secondary data-phone-label>+254 707 421 337</a>
+            <a class="btn btn--whatsapp btn--small" href="#" data-whatsapp-link>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/></svg>
+              WhatsApp enquiry
+            </a>
+            <p class="footer__contact-note">Opens WhatsApp externally. The demonstration does not send, deliver or confirm messages.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__demo">
+        <strong>Independent concept demonstration.</strong> This is not the official website of DE LA BOSS OUTFITS and has not been commissioned, approved or launched by the business. Product names, prices, stock, imagery and orders are sample demonstration content unless clearly stated otherwise. Contact numbers and location are supplied business details used for this concept. <a href="about.html#about-demo" style="text-decoration:underline;text-underline-offset:3px;color:rgba(246,241,233,.75)">Read the demonstration notes.</a>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__legal">
+          <span>© <span data-year>2026</span> DE LA BOSS OUTFITS — concept storefront</span>
+          <span>Privacy: form and order data stay in this browser only.</span>
+        </div>
+        <p class="footer__credit">Website concept demonstration by <strong>Thomas Hondo Chacha — Software Engineer.</strong></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

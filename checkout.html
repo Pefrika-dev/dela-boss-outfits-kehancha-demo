@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-KE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demonstration Checkout | DE LA BOSS OUTFITS Concept</title>
+  <meta name="description" content="Complete a demonstration order for the DE LA BOSS OUTFITS website concept. No payment is taken and no order is sent to the store.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://your-domain.example/checkout.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Demonstration Checkout | DE LA BOSS OUTFITS Concept">
+  <meta property="og:description" content="A local-only demonstration checkout. Review your sample order and see how the ordering journey could work.">
+  <meta property="og:image" content="https://your-domain.example/assets/images/editorial/hero.jpg">
+  <meta property="og:url" content="https://your-domain.example/checkout.html">
+  <meta property="og:locale" content="en_KE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#171512">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/checkout.js" defer></script>
+</head>
+<body data-page="checkout">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announcement" data-announcement-bar>
+    <div class="container announcement__inner">
+      <span class="announcement__location">KEHANCHA · MIGORI COUNTY</span>
+      <span class="announcement__message" data-announcement-text>YOUR STYLE. YOUR STATEMENT.</span>
+      <span class="announcement__demo">CONCEPT STOREFRONT</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <button class="icon-btn menu-toggle" type="button" data-open-menu aria-label="Open navigation" aria-haspopup="dialog">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="wordmark" href="index.html" aria-label="DE LA BOSS OUTFITS home">
+        <span class="wordmark__main">DE LA BOSS</span>
+        <span class="wordmark__sub">OUTFITS</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?filter=new">New Arrivals</a>
+        <a href="shop.html?group=clothing">Clothing</a>
+        <a href="shop.html?category=Shoes">Shoes</a>
+        <a href="shop.html?category=Accessories">Accessories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header__actions">
+        <button class="icon-btn" type="button" data-open-search aria-label="Search the sample collection" aria-haspopup="dialog">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        </button>
+        <a class="icon-btn bag-link" href="cart.html" data-cart-label aria-label="Shopping bag, 0 items">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          <span class="bag-count is-empty" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-main checkout-page">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" id="checkoutBreadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="cart.html">Bag</a></li>
+          <li aria-current="page">Checkout</li>
+        </ol>
+      </nav>
+
+      <header class="checkout-header" id="checkoutHeader">
+        <div>
+          <p class="eyebrow">Demonstration checkout</p>
+          <h1>COMPLETE YOUR ORDER.</h1>
+        </div>
+        <p>This is a working prototype, not a real purchase. Your details and sample order stay in this browser. No payment is requested and nothing is sent to the store.</p>
+      </header>
+
+      <div class="checkout-layout" id="checkoutLayout" hidden>
+        <form class="checkout-form" id="checkoutForm" novalidate>
+          <section class="form-section" aria-labelledby="contact-title">
+            <div class="form-section__head">
+              <span class="form-section__index">01</span>
+              <h2 id="contact-title">Contact details</h2>
+            </div>
+            <p class="form-section__intro">Used only to prefill this demonstration order. Nothing is emailed or messaged automatically.</p>
+            <div class="field-row">
+              <div class="field">
+                <label for="checkoutName">Full name <span class="optional">required</span></label>
+                <input id="checkoutName" name="name" type="text" autocomplete="name" required aria-describedby="nameError">
+                <p class="field__error" id="nameError"></p>
+              </div>
+              <div class="field">
+                <label for="checkoutPhone">Phone number <span class="optional">required</span></label>
+                <input id="checkoutPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX or +254 7XX XXX XXX" required aria-describedby="phoneHelp phoneError">
+                <p class="field__help" id="phoneHelp">Kenyan mobile number. Spaces are accepted.</p>
+                <p class="field__error" id="phoneError"></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="checkoutEmail">Email address <span class="optional">optional</span></label>
+              <input id="checkoutEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="emailError">
+              <p class="field__error" id="emailError"></p>
+            </div>
+          </section>
+
+          <section class="form-section" aria-labelledby="fulfilment-title">
+            <div class="form-section__head">
+              <span class="form-section__index">02</span>
+              <h2 id="fulfilment-title">How would you receive it?</h2>
+            </div>
+            <p class="form-section__intro">Choose a preference. The store would confirm the real arrangement directly — this concept does not promise delivery coverage or collection times.</p>
+            <div class="fulfilment-options" role="radiogroup" aria-labelledby="fulfilment-title">
+              <label class="fulfilment-card">
+                <input type="radio" name="fulfilment" value="collection" checked>
+                <span class="fulfilment-card__indicator" aria-hidden="true"></span>
+                <span class="fulfilment-card__copy">
+                  <strong>Collection</strong>
+                  <span>Arrange pickup with the store in Kehancha.</span>
+                </span>
+              </label>
+              <label class="fulfilment-card">
+                <input type="radio" name="fulfilment" value="delivery">
+                <span class="fulfilment-card__indicator" aria-hidden="true"></span>
+                <span class="fulfilment-card__copy">
+                  <strong>Delivery</strong>
+                  <span>Share a delivery preference for the demonstration.</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="delivery-fields" id="deliveryFields" hidden>
+              <div class="field-row">
+                <div class="field">
+                  <label for="checkoutCounty">County <span class="optional">required</span></label>
+                  <select id="checkoutCounty" name="county" aria-describedby="countyError">
+                    <option value="">Select a county</option>
+                  </select>
+                  <p class="field__error" id="countyError"></p>
+                </div>
+                <div class="field">
+                  <label for="checkoutTown">Town or area <span class="optional">required</span></label>
+                  <input id="checkoutTown" name="town" type="text" autocomplete="address-level2" placeholder="e.g. Kehancha" aria-describedby="townError">
+                  <p class="field__error" id="townError"></p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="checkoutAddress">Delivery details <span class="optional">optional</span></label>
+                <input id="checkoutAddress" name="address" type="text" autocomplete="street-address" placeholder="Landmark, building or directions">
+              </div>
+              <p class="delivery-field-note">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>
+                Delivery availability, timing and any cost are not confirmed by this website concept. They would be agreed with DE LA BOSS OUTFITS directly.
+              </p>
+            </div>
+          </section>
+
+          <section class="form-section" aria-labelledby="notes-title">
+            <div class="form-section__head">
+              <span class="form-section__index">03</span>
+              <h2 id="notes-title">Anything else?</h2>
+            </div>
+            <div class="field">
+              <label for="checkoutNotes">Order note <span class="optional">optional</span></label>
+              <textarea id="checkoutNotes" name="notes" placeholder="Size question, preferred contact time or a note for the store"></textarea>
+            </div>
+          </section>
+
+          <section class="form-section" aria-labelledby="review-title">
+            <div class="form-section__head">
+              <span class="form-section__index">04</span>
+              <h2 id="review-title">Review &amp; place demo order</h2>
+            </div>
+            <p class="form-section__intro">Your order will be created with a demonstration reference and saved only in this browser. It will also appear in the demonstration admin dashboard.</p>
+            <label class="checkbox-field">
+              <input id="checkoutConfirm" name="confirm" type="checkbox" required>
+              <span>I understand this is an independent website demonstration. No payment is taken, no order is sent to DE LA BOSS OUTFITS, and no delivery or collection is arranged.</span>
+            </label>
+            <p class="field__error" id="confirmError" style="margin-top:6px"></p>
+            <p class="form-error" id="checkoutFormError" role="alert" hidden></p>
+            <p class="form-error" id="checkoutBlocked" role="alert" hidden>
+              Some pieces in your bag need attention. <a href="cart.html" style="text-decoration:underline">Review your bag</a> before placing the demonstration order.
+            </p>
+            <div class="checkout-submit">
+              <button class="btn btn--dark" type="submit" id="checkoutSubmit">
+                Place demonstration order
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
+              </button>
+              <p class="checkout-submit__note">No card, M-Pesa or bank details are requested on this page. The store would confirm a real order and payment method directly.</p>
+            </div>
+          </section>
+        </form>
+
+        <aside class="checkout-summary" aria-labelledby="checkout-summary-title">
+          <h2 id="checkout-summary-title">Order summary</h2>
+          <div class="checkout-summary__items" id="checkoutSummaryItems"></div>
+          <div class="checkout-totals">
+            <div class="summary-lines">
+              <div class="summary-line"><span>Subtotal <span id="summaryQty" class="summary-qty"></span></span><span id="checkoutSubtotal">KSh 0</span></div>
+              <div class="summary-line"><span>Delivery</span><span id="checkoutDelivery">Collection · no fee</span></div>
+              <div class="summary-line summary-line--total"><span>Estimated total</span><span id="checkoutTotal">KSh 0</span></div>
+            </div>
+          </div>
+          <p class="demo-note">Demonstration totals only. Delivery costs, if any, are not a real quote. Prices and stock are sample data. <a href="cart.html" style="text-decoration:underline;text-underline-offset:2px">Edit bag</a></p>
+          <div class="cart-summary__meta" style="margin-top:16px">
+            <p>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Data stays on this device. Clearing your browser storage removes the demonstration order.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="checkout-empty" id="checkoutEmpty" hidden>
+        <div class="empty-state">
+          <div class="empty-state__icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          </div>
+          <h2>There is nothing to check out.</h2>
+          <p>Add a sample piece to your bag first, then return here to try the demonstration order flow.</p>
+          <a class="btn" href="shop.html">Explore the collection</a>
+        </div>
+      </div>
+
+      <section class="order-confirmation" id="orderConfirmation" aria-labelledby="confirmTitle" hidden></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="wordmark" href="index.html" aria-label="DE LA BOSS OUTFITS home">
+            <span class="wordmark__main">DE LA BOSS</span>
+            <span class="wordmark__sub">OUTFITS</span>
+          </a>
+          <p>Clothing and fashion retail. An independent digital storefront concept exploring a more considered way to discover and enquire.</p>
+          <p class="footer__location">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Kehancha, Migori County, Kenya
+          </p>
+        </div>
+        <div class="footer__col">
+          <h3>Explore</h3>
+          <div class="footer__links">
+            <a href="shop.html">Shop all</a>
+            <a href="shop.html?filter=new">New arrivals</a>
+            <a href="about.html">About the store</a>
+            <a href="contact.html">Contact</a>
+            <a href="admin.html">Admin demo</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <div class="footer__links">
+            <a href="shop.html?category=Men">Men's fashion</a>
+            <a href="shop.html?category=Women">Women's fashion</a>
+            <a href="shop.html?category=Shoes">Shoes</a>
+            <a href="shop.html?category=Accessories">Accessories</a>
+            <a href="shop.html?category=Essentials">Everyday essentials</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Talk to the store</h3>
+          <div class="footer__contact">
+            <a href="tel:+254758102552" data-phone-primary data-phone-label>+254 758 102 552</a>
+            <a href="tel:+254707421337" data-phone-secondary data-phone-label>+254 707 421 337</a>
+            <a class="btn btn--whatsapp btn--small" href="#" data-whatsapp-link>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/></svg>
+              WhatsApp enquiry
+            </a>
+            <p class="footer__contact-note">Opens WhatsApp externally. The demonstration does not send, deliver or confirm messages.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__demo">
+        <strong>Independent concept demonstration.</strong> This is not the official website of DE LA BOSS OUTFITS and has not been commissioned, approved or launched by the business. Product names, prices, stock, imagery and orders are sample demonstration content unless clearly stated otherwise. Contact numbers and location are supplied business details used for this concept. <a href="about.html#about-demo" style="text-decoration:underline;text-underline-offset:3px;color:rgba(246,241,233,.75)">Read the demonstration notes.</a>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__legal">
+          <span>© <span data-year>2026</span> DE LA BOSS OUTFITS — concept storefront</span>
+          <span>Privacy: form and order data stay in this browser only.</span>
+        </div>
+        <p class="footer__credit">Website concept demonstration by <strong>Thomas Hondo Chacha — Software Engineer.</strong></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

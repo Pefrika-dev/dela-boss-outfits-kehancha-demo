@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-label="Sample product image placeholder">
+  <rect width="900" height="1125" fill="#eee7dc"/>
+  <rect x="1" y="1" width="898" height="1123" fill="none" stroke="#d6cbbb"/>
+  <circle cx="450" cy="488" r="92" fill="none" stroke="#9d3e26" stroke-width="1.5"/>
+  <text x="450" y="512" fill="#9d3e26" font-family="Georgia, serif" font-size="64" text-anchor="middle">DLB</text>
+  <text x="450" y="628" fill="#171512" font-family="Arial, sans-serif" font-size="18" letter-spacing="7" text-anchor="middle">SAMPLE IMAGE</text>
+  <text x="450" y="664" fill="#6d655b" font-family="Arial, sans-serif" font-size="13" letter-spacing="3" text-anchor="middle">DEMONSTRATION CATALOGUE</text>
+  <path d="M350 760h200M350 780h140" stroke="#b38b57" stroke-width="1"/>
+</svg>
