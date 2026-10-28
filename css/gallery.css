@@ -1,0 +1,166 @@
+/* ==========================================================================
+   DE LA BOSS OUTFITS — store photography gallery
+   Slots stay visible as labelled placeholders until real photographs are added.
+   ========================================================================== */
+
+.store-gallery__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.store-gallery__status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.store-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.store-shot {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background-color: var(--paper-2);
+  aspect-ratio: 3 / 4;
+}
+
+.store-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease);
+}
+
+.store-shot:hover img {
+  transform: scale(1.04);
+}
+
+.store-shot__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 26px 14px 12px;
+  background: linear-gradient(to top, rgba(18, 16, 14, 0.86), rgba(18, 16, 14, 0));
+  color: var(--paper);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.store-shot__index {
+  color: var(--accent-soft);
+}
+
+.store-shot.is-pending {
+  background-image: repeating-linear-gradient(135deg, rgba(23, 21, 18, 0.05) 0 1px, transparent 1px 15px);
+}
+
+.store-shot.is-pending img,
+.store-shot.is-pending .store-shot__caption {
+  visibility: hidden;
+}
+
+.store-shot__pending {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 20px;
+  text-align: center;
+}
+
+.store-shot:not(.is-pending) .store-shot__pending {
+  display: none;
+}
+
+.store-shot__pending strong {
+  color: var(--ink-3);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.store-shot__pending span {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.store-gallery__note {
+  max-width: 640px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.store-gallery__grid--three {
+  max-width: 960px;
+}
+
+@media (max-width: 639px) {
+  .store-gallery__grid--three .store-shot:first-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 640px) {
+  .store-gallery__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .store-gallery__grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .store-gallery__grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-shot img {
+    transition: none;
+  }
+
+  .store-shot:hover img {
+    transform: none;
+  }
+}

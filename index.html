@@ -21,9 +21,11 @@
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/images/editorial/hero.jpg" as="image">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gallery.css">
   <script src="js/products.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/home.js" defer></script>
+  <script src="js/gallery.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -253,6 +255,68 @@
           <p class="shop-no-js">Loading the collection…</p>
         </div>
         <p class="sample-note" style="margin-top:28px">Preview catalogue — prices and stock are illustrative until confirmed by the store.</p>
+      </div>
+    </section>
+
+    <section class="section section--bordered store-gallery" aria-labelledby="store-gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <p class="eyebrow">Inside the store</p>
+            <h2 id="store-gallery-title">THE SHOP, NOT THE STOCK IMAGE.</h2>
+            <p>Five slots reserved for the owner's own photography — the entrance, the rail, the styling corner, the detail shots and the team. Real photographs will replace stock imagery as soon as they are supplied.</p>
+          </div>
+          <span class="store-gallery__status">Photography pending</span>
+        </div>
+
+        <div class="store-gallery__grid" data-store-gallery>
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-01.jpg">
+            <img alt="Shop front of DE LA BOSS OUTFITS in Kehancha, Migori County" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>Shop front</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">01</span> Shop front</figcaption>
+          </figure>
+
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-02.jpg">
+            <img alt="Clothing rail inside DE LA BOSS OUTFITS, Kehancha" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>The rail</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">02</span> The rail</figcaption>
+          </figure>
+
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-03.jpg">
+            <img alt="Styling and fitting corner inside DE LA BOSS OUTFITS" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>Styling</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">03</span> Styling corner</figcaption>
+          </figure>
+
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-04.jpg">
+            <img alt="Accessories and footwear displayed at DE LA BOSS OUTFITS" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>Details</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">04</span> Accessories &amp; footwear</figcaption>
+          </figure>
+
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-05.jpg">
+            <img alt="The team at DE LA BOSS OUTFITS, Kehancha" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>The team</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">05</span> The team at work</figcaption>
+          </figure>
+        </div>
+
+        <p class="store-gallery__note">Placeholders are shown until the owner supplies original photography. No stock image is presented as the shop, its team or its stock. Photographs of customers or staff are published only with consent.</p>
       </div>
     </section>
 

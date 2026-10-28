@@ -315,6 +315,12 @@ Concept, design and front-end implementation: **Thomas Hondo Chacha — Software
 
 All photographs are licensed stock from [Pexels](https://www.pexels.com/license/) and are used here as placeholder/sample imagery for the demonstration. They do not depict DE LA BOSS OUTFITS products, premises or team.
 
+#### Store photography slots
+
+`index.html` and `about.html` include an "Inside the store" gallery whose tiles stay as labelled placeholders until original shop photographs are supplied. Drop files named `store-01.jpg` … `store-05.jpg` into `assets/images/store/` and they appear automatically — no HTML edit required. Requirements and suggested subjects are documented in `assets/images/store/README.md`.
+
+Slots in use: five on the home page (`store-01` … `store-05`), three on the about page (`store-01`, `store-02`, `store-05`). Files must be portrait 3:4, roughly 900 × 1200 px or 1200 × 1600 px, JPG or WebP, and must be owned or licensed by the business.
+
 | Use | Pexels photo ID |
 | --- | --- |
 | Product `db-001` | 9955929 |

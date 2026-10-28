@@ -20,8 +20,10 @@
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/gallery.css">
   <script src="js/products.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/gallery.js" defer></script>
 </head>
 <body data-page="about">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -174,6 +176,50 @@
       </div>
     </section>
 
+    <section class="section section--bordered store-gallery" aria-labelledby="about-gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <p class="eyebrow">The physical store</p>
+            <h2 id="about-gallery-title">A SPACE WORTH SHOWING.</h2>
+            <p>Kehancha is the reason this store exists. Three slots are reserved here for original photographs of the entrance, the rail and the people behind the counter — supplied by the owner, not borrowed from a stock library.</p>
+          </div>
+          <span class="store-gallery__status">Photography pending</span>
+        </div>
+
+        <div class="store-gallery__grid store-gallery__grid--three" data-store-gallery>
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-01.jpg">
+            <img alt="Shop front of DE LA BOSS OUTFITS in Kehancha, Migori County" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>Shop front</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">01</span> Shop front</figcaption>
+          </figure>
+
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-02.jpg">
+            <img alt="Clothing rail inside DE LA BOSS OUTFITS, Kehancha" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>The rail</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">02</span> The rail</figcaption>
+          </figure>
+
+          <figure class="store-shot is-pending" data-photo="assets/images/store/store-05.jpg">
+            <img alt="The team at DE LA BOSS OUTFITS, Kehancha" loading="lazy" width="900" height="1200">
+            <div class="store-shot__pending" aria-hidden="true">
+              <strong>The team</strong>
+              <span>Awaiting photograph</span>
+            </div>
+            <figcaption class="store-shot__caption"><span class="store-shot__index">03</span> The team at work</figcaption>
+          </figure>
+        </div>
+
+        <p class="store-gallery__note">Until these photographs arrive, each tile stays a clearly labelled placeholder. Nothing here is presented as the shop, its team or its stock.</p>
+      </div>
+    </section>
+
     <section class="section about-demo" id="about-preview" aria-labelledby="about-preview-title">
       <div class="container">
         <div class="about-demo__head">
@@ -204,7 +250,7 @@
           </article>
           <article class="demo-note-card">
             <h3>Photography &amp; imagery</h3>
-            <p>Editorial and product photographs are licensed stock imagery used to demonstrate art direction. They are not photographs of the shop, its team or its actual stock. Image credits appear in the project README.</p>
+            <p>Editorial and product photographs are licensed stock imagery used to demonstrate art direction. They are not photographs of the shop, its team or its actual stock. Slots for original shop photography are reserved above and stay as labelled placeholders until the owner supplies them. Image credits appear in the project README.</p>
           </article>
         </div>
         <p class="about-demo__footnote">The Google Business Profile and Facebook video supplied for context informed this proposal only. Their content, ratings, hours, posts and contact details have not been reproduced or treated as verified facts.</p>
