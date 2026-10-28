@@ -1575,11 +1575,31 @@ h3 {
 
 .footer__credit {
   text-align: right;
+  color: rgba(246, 241, 233, 0.67);
 }
 
 .footer__credit strong {
   color: rgba(246, 241, 233, 0.67);
   font-weight: 500;
+}
+
+.footer__credit a,
+.footer__credit strong a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: opacity 0.2s ease;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  display: inline !important;
+}
+
+.footer__credit a:hover,
+.footer__credit a:focus-visible,
+.footer__credit strong a:hover,
+.footer__credit strong a:focus-visible {
+  opacity: 0.9;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
 }
 
 /* Inner page foundations

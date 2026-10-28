@@ -236,7 +236,7 @@
     });
     if (state.price) pills.push({ type: 'price', value: state.price, label: PRICE_LABELS[state.price] });
     if (state.edits.has('new')) pills.push({ type: 'edit', value: 'new', label: 'New arrivals' });
-    if (state.edits.has('sale')) pills.push({ type: 'edit', value: 'sale', label: 'Sample sale' });
+    if (state.edits.has('sale')) pills.push({ type: 'edit', value: 'sale', label: 'On offer' });
     if (!pills.length) {
       container.innerHTML = '';
       return;
@@ -266,7 +266,7 @@
     if (count) count.textContent = products.length + (products.length === 1 ? ' piece' : ' pieces');
     if (loadNote) {
       loadNote.textContent = products.length
-        ? 'Showing ' + shown.length + ' of ' + products.length + ' sample ' + (products.length === 1 ? 'piece' : 'pieces')
+        ? 'Showing ' + shown.length + ' of ' + products.length + ' ' + (products.length === 1 ? 'piece' : 'pieces')
         : '';
     }
     if (loadBtn) loadBtn.hidden = shown.length >= products.length;

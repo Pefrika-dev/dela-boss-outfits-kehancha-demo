@@ -1,6 +1,6 @@
 /*
  * DE LA BOSS OUTFITS — contact page
- * Local-only demonstration enquiry form with Kenyan phone validation
+ * Local-only preview enquiry form with Kenyan phone validation
  * and a WhatsApp handoff that the visitor must review and send.
  */
 (function () {
@@ -49,7 +49,7 @@
       mark(setError('contactName', 'contactNameError', 'Enter your name so the note has a sender.'));
     }
     if (!phone.value.trim()) {
-      mark(setError('contactPhone', 'contactPhoneError', 'Enter a phone number for the demonstration note.'));
+      mark(setError('contactPhone', 'contactPhoneError', 'Enter a phone number for this enquiry.'));
     } else if (!DB.validateKenyanPhone(phone.value)) {
       mark(setError('contactPhone', 'contactPhoneError', 'Enter a valid Kenyan mobile number, for example 0712 345 678.'));
     }
@@ -60,7 +60,7 @@
       mark(setError('contactMessage', 'contactMessageError', 'Add a little more detail — at least 10 characters.'));
     }
     if (!confirm.checked) {
-      mark(setError('contactConfirm', 'contactConfirmError', 'Please confirm that you understand this is a demonstration.'));
+      mark(setError('contactConfirm', 'contactConfirmError', 'Please confirm that you understand this is a preview form.'));
     }
     if (first) {
       first.focus();
@@ -83,7 +83,7 @@
     const lines = [
       'Hello ' + settings.storeName + ',',
       '',
-      'I would like to make an enquiry through the website concept demonstration.',
+      'I would like to make an enquiry through the storefront preview.',
       '',
       'Subject: ' + subject
     ];
@@ -96,7 +96,7 @@
       lines.push(message);
     }
     lines.push('');
-    lines.push('This message was prepared by the DE LA BOSS OUTFITS website concept demonstration. I understand that I need to review and send it myself.');
+    lines.push('This message was prepared by the DE LA BOSS OUTFITS storefront preview. I understand that I need to review and send it myself.');
     return lines.join('\n');
   }
 
@@ -133,18 +133,18 @@
         email: byId('contactEmail').value.trim(),
         subject: byId('contactSubject').value,
         message: byId('contactMessage').value.trim(),
-        source: 'demo-contact-form'
+        source: 'preview-contact-form'
       });
       const feedback = byId('contactFeedback');
       if (feedback) {
-        feedback.textContent = 'Saved in this browser. This demonstration did not send your note to DE LA BOSS OUTFITS — use the supplied phone numbers or WhatsApp for a real conversation.';
+        feedback.textContent = 'Saved in this browser. This preview did not send your note to DE LA BOSS OUTFITS — use the supplied phone numbers or WhatsApp for a real conversation.';
         feedback.className = 'form-feedback form-feedback--success';
         feedback.hidden = false;
         if (typeof feedback.scrollIntoView === 'function') {
           feedback.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
       }
-      DB.toast('Demonstration enquiry saved locally. No message was sent.', { type: 'success', duration: 5600 });
+      DB.toast('Enquiry saved locally. No message was sent.', { type: 'success', duration: 5600 });
       form.reset();
     });
 

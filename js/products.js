@@ -1,12 +1,12 @@
 /*
- * DE LA BOSS OUTFITS — demonstration catalogue
+ * DE LA BOSS OUTFITS — preview catalogue
  * ------------------------------------------------------------------
  * Every product, price, colour, size and stock figure in this file is
- * SAMPLE DATA created for the website demonstration. It is not the real
+ * PREVIEW DATA created for the storefront proposal. It is not the real
  * inventory of DE LA BOSS OUTFITS.
  *
  * Replace the objects below with the shop owner's confirmed products, or
- * manage products from the demonstration admin dashboard.
+ * manage products from the store dashboard.
  */
 (function () {
   'use strict';
@@ -56,7 +56,7 @@
       id: 'new',
       name: 'New',
       title: 'New Arrivals',
-      description: 'The latest additions to the sample collection.',
+      description: 'The latest additions to the collection.',
       image: 'assets/images/categories/new.jpg',
       alt: 'Fashion editorial portrait of a woman in a black outfit and boots.'
     }
@@ -78,7 +78,7 @@
       ],
       images: ['assets/images/products/db-001.jpg', 'assets/images/products/db-001-detail.jpg'],
       description: 'A clean button-down shirt with an easy point collar and a relaxed everyday shape. Styled for workdays, weekends and everything in between.',
-      details: ['Relaxed sample fit', 'Button front and chest pocket', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Relaxed fit', 'Button front and chest pocket', 'Fabric and fit to be confirmed with the store'],
       featured: true,
       newArrival: false,
       dateAdded: '2026-09-14'
@@ -95,7 +95,7 @@
       colors: [{ name: 'Bone', hex: '#E3DDD2' }],
       images: ['assets/images/products/db-002.jpg', 'assets/images/products/db-002-detail.jpg'],
       description: 'A straight-leg trouser with a polished line and a quiet, versatile finish. Designed to move easily from daytime to evening.',
-      details: ['Straight-leg sample silhouette', 'Side pockets', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Straight-leg silhouette', 'Side pockets', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-08'
@@ -115,7 +115,7 @@
       ],
       images: ['assets/images/products/db-003.jpg', 'assets/images/products/db-003-detail.jpg'],
       description: 'A lightweight puffer with a confident volume and a clean zip front. A practical layer for cool mornings and late nights.',
-      details: ['Quilted sample outer', 'Zip front and side pockets', 'Sample catalogue item — insulation and fit to be confirmed with the store'],
+      details: ['Quilted outer', 'Zip front and side pockets', 'Insulation and fit to be confirmed with the store'],
       featured: true,
       newArrival: false,
       dateAdded: '2026-08-30'
@@ -132,7 +132,7 @@
       colors: [{ name: 'Indigo', hex: '#354A60' }],
       images: ['assets/images/products/db-004.jpg', 'assets/images/products/db-004-detail.jpg'],
       description: 'A timeless denim layer with a boxy shape and room for a hoodie underneath. Built for repeat wear and easy styling.',
-      details: ['Classic collared sample jacket', 'Button front and flap pockets', 'Sample sale price shown for demonstration only'],
+      details: ['Classic collared jacket', 'Button front and flap pockets', 'Price shown for preview only'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-08-21'
@@ -149,7 +149,7 @@
       colors: [{ name: 'Black', hex: '#141414' }],
       images: ['assets/images/products/db-005.jpg', 'assets/images/products/db-005-detail.jpg'],
       description: 'A sharp black outer layer with a minimal zip front and an effortless edge. The piece that finishes a simple outfit.',
-      details: ['Slim sample silhouette', 'Asymmetric zip detail', 'Sample catalogue item — material and fit to be confirmed with the store'],
+      details: ['Slim silhouette', 'Asymmetric zip detail', 'Material and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-08-12'
@@ -166,7 +166,7 @@
       colors: [{ name: 'Earth Print', hex: '#8B6345' }],
       images: ['assets/images/products/db-006.jpg', 'assets/images/products/db-006-detail.jpg'],
       description: 'An easy midi dress with a graphic earth-toned print and a fluid line. Dress it up with heels or keep it grounded in sandals.',
-      details: ['Relaxed sample fit', 'Round neckline and short sleeves', 'Sample catalogue item — print scale and fit to be confirmed with the store'],
+      details: ['Relaxed fit', 'Round neckline and short sleeves', 'Print scale and fit to be confirmed with the store'],
       featured: true,
       newArrival: true,
       dateAdded: '2026-10-16'
@@ -186,7 +186,7 @@
       ],
       images: ['assets/images/products/db-007.jpg', 'assets/images/products/db-007-detail.jpg'],
       description: 'A clean column silhouette with a contour waist and an elegant neckline. Understated, sculptural and made for an entrance.',
-      details: ['Column sample silhouette', 'Contrast waist detail', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Column silhouette', 'Contrast waist detail', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-25'
@@ -203,7 +203,7 @@
       colors: [{ name: 'Black', hex: '#151515' }],
       images: ['assets/images/products/db-008.jpg', 'assets/images/products/db-008-detail.jpg'],
       description: 'A close-cut mini dress with long sleeves and a confident simplicity. Wear it as a standalone statement or under a tailored layer.',
-      details: ['Fitted sample silhouette', 'Long sleeves', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Fitted silhouette', 'Long sleeves', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-02'
@@ -220,7 +220,7 @@
       colors: [{ name: 'Black', hex: '#161616' }],
       images: ['assets/images/products/db-009.jpg', 'assets/images/products/db-009-detail.jpg'],
       description: 'A modern shirt dress with a defined waist and a playful back detail. Easy to style, impossible to overlook.',
-      details: ['Belted sample waist', 'Button back detail', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Belted waist', 'Button back detail', 'Fabric and fit to be confirmed with the store'],
       featured: true,
       newArrival: true,
       dateAdded: '2026-10-12'
@@ -240,7 +240,7 @@
       ],
       images: ['assets/images/products/db-010.jpg', 'assets/images/products/db-010-detail.jpg'],
       description: 'A fluid wide-leg trouser that brings instant movement to a simple top. The kind of piece that makes getting dressed feel easy.',
-      details: ['High-rise sample fit', 'Wide leg', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['High-rise fit', 'Wide leg', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-11'
@@ -257,7 +257,7 @@
       colors: [{ name: 'Rose', hex: '#C47A83' }],
       images: ['assets/images/products/db-011.jpg', 'assets/images/products/db-011-detail.jpg'],
       description: 'A softly textured blouse with a neat neckline and an easy drape. An effortless partner for denim, tailoring or a favourite skirt.',
-      details: ['Relaxed sample fit', 'Short sleeves', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Relaxed fit', 'Short sleeves', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-18'
@@ -274,7 +274,7 @@
       colors: [{ name: 'Ivory', hex: '#EEE7DB' }],
       images: ['assets/images/products/db-012.jpg', 'assets/images/products/db-012-detail.jpg'],
       description: 'A light layering piece with a relaxed collar and an airy finish. Add it over a simple base for an instant change of mood.',
-      details: ['Relaxed overshirt sample fit', 'Button front', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Relaxed overshirt fit', 'Button front', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-05'
@@ -291,7 +291,7 @@
       colors: [{ name: 'White / Blue', hex: '#DCE4ED' }],
       images: ['assets/images/products/db-013.jpg', 'assets/images/products/db-013-detail.jpg'],
       description: 'A clean court-inspired sneaker with a high-top profile and a confident colour block. The everyday pair that does more than one job.',
-      details: ['High-top sample silhouette', 'Cushioned collar', 'Sample catalogue item — sizing and materials to be confirmed with the store'],
+      details: ['High-top silhouette', 'Cushioned collar', 'Sizing and materials to be confirmed with the store'],
       featured: true,
       newArrival: true,
       dateAdded: '2026-10-14'
@@ -308,7 +308,7 @@
       colors: [{ name: 'Black', hex: '#191919' }],
       images: ['assets/images/products/db-014.jpg', 'assets/images/products/db-014-detail.jpg'],
       description: 'A monochrome high-top with a canvas attitude and an easy everyday sole. Pair it with denim, tailoring or a dress.',
-      details: ['High-top sample silhouette', 'Lace-up front', 'Sample catalogue item — sizing and materials to be confirmed with the store'],
+      details: ['High-top silhouette', 'Lace-up front', 'Sizing and materials to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-08-28'
@@ -325,7 +325,7 @@
       colors: [{ name: 'Bone', hex: '#D9D1C3' }],
       images: ['assets/images/products/db-015.jpg', 'assets/images/products/db-015-detail.jpg'],
       description: 'A sculpted runner with a chunky sole and a soft neutral finish. Comfort-first styling with a little extra presence.',
-      details: ['Chunky sample sole', 'Padded collar', 'Sample sale price shown for demonstration only'],
+      details: ['Chunky sole', 'Padded collar', 'Price shown for preview only'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-09'
@@ -342,7 +342,7 @@
       colors: [{ name: 'Green / Black', hex: '#24523A' }],
       images: ['assets/images/products/db-016.jpg', 'assets/images/products/db-016-detail.jpg'],
       description: 'A retro basketball-inspired runner in deep green and black. A strong finish for a simple outfit, or the main event on its own.',
-      details: ['Retro high-top sample silhouette', 'Contrast sole', 'Sample catalogue item — sizing and materials to be confirmed with the store'],
+      details: ['Retro high-top silhouette', 'Contrast sole', 'Sizing and materials to be confirmed with the store'],
       featured: true,
       newArrival: true,
       dateAdded: '2026-10-10'
@@ -359,7 +359,7 @@
       colors: [{ name: 'Cognac', hex: '#8A4E2F' }],
       images: ['assets/images/products/db-017.jpg', 'assets/images/products/db-017-detail.jpg'],
       description: 'A polished leather Oxford with a warm patina and a timeless profile. For the days that call for something considered.',
-      details: ['Lace-up sample silhouette', 'Leather-look finish', 'Sample catalogue item — materials and sizing to be confirmed with the store'],
+      details: ['Lace-up silhouette', 'Leather-look finish', 'Materials and sizing to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-08-19'
@@ -376,7 +376,7 @@
       colors: [{ name: 'Brown', hex: '#6C452C' }],
       images: ['assets/images/products/db-018.jpg', 'assets/images/products/db-018-detail.jpg'],
       description: 'A woven leather loafer with an easy slip-on shape. Smart enough for work, relaxed enough for the rest of the day.',
-      details: ['Woven sample upper', 'Slip-on silhouette', 'Sample catalogue item — materials and sizing to be confirmed with the store'],
+      details: ['Woven upper', 'Slip-on silhouette', 'Materials and sizing to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-01'
@@ -393,7 +393,7 @@
       colors: [{ name: 'Tan', hex: '#B77A49' }],
       images: ['assets/images/products/db-019.jpg', 'assets/images/products/db-019-detail.jpg'],
       description: 'A structured tote with a top handle and a warm tan finish. Roomy enough for the day, clean enough to carry anywhere.',
-      details: ['Top-handle sample tote', 'Structured body', 'Sample catalogue item — dimensions and materials to be confirmed with the store'],
+      details: ['Top-handle tote', 'Structured body', 'Dimensions and materials to be confirmed with the store'],
       featured: true,
       newArrival: false,
       dateAdded: '2026-09-22'
@@ -410,7 +410,7 @@
       colors: [{ name: 'Cognac', hex: '#8C5434' }],
       images: ['assets/images/products/db-020.jpg', 'assets/images/products/db-020-detail.jpg'],
       description: 'A compact shoulder bag with a chain detail and a rich cognac tone. The easiest way to finish a look.',
-      details: ['Chain shoulder sample strap', 'Compact body', 'Sample catalogue item — dimensions and materials to be confirmed with the store'],
+      details: ['Chain shoulder strap', 'Compact body', 'Dimensions and materials to be confirmed with the store'],
       featured: false,
       newArrival: true,
       dateAdded: '2026-10-08'
@@ -427,7 +427,7 @@
       colors: [{ name: 'Black / Gold', hex: '#9C7B45' }],
       images: ['assets/images/products/db-021.jpg', 'assets/images/products/db-021-detail.jpg'],
       description: 'A clean watch-and-frames pairing for everyday finishing. Quiet details that bring a look together.',
-      details: ['Sample watch and eyewear set', 'Adjustable strap', 'Sample sale price shown for demonstration only'],
+      details: ['Watch and eyewear set', 'Adjustable strap', 'Price shown for preview only'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-16'
@@ -444,7 +444,7 @@
       colors: [{ name: 'Black', hex: '#171717' }],
       images: ['assets/images/products/db-022.jpg', 'assets/images/products/db-022-detail.jpg'],
       description: 'A considered edit of everyday accessories — watch, eyewear and finishing pieces styled together. One easy gift to yourself.',
-      details: ['Curated sample accessories set', 'Set contents may vary', 'Sample catalogue item — exact contents to be confirmed with the store'],
+      details: ['Curated accessories set', 'Set contents may vary', 'Exact contents to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-06'
@@ -464,7 +464,7 @@
       ],
       images: ['assets/images/products/db-023.jpg', 'assets/images/products/db-023-detail.jpg'],
       description: 'A dependable straight-leg denim with an easy rise and a lived-in blue wash. The piece you reach for without thinking.',
-      details: ['Straight-leg sample fit', 'Classic five-pocket styling', 'Sample catalogue item — fabric and fit to be confirmed with the store'],
+      details: ['Straight-leg fit', 'Classic five-pocket styling', 'Fabric and fit to be confirmed with the store'],
       featured: false,
       newArrival: false,
       dateAdded: '2026-09-03'
@@ -484,7 +484,7 @@
       ],
       images: ['assets/images/products/db-024.jpg', 'assets/images/products/db-024-detail.jpg'],
       description: 'A clean crew-neck tee with a relaxed shape and an easy finish. The foundation of a wardrobe that works hard.',
-      details: ['Relaxed sample fit', 'Crew neckline', 'Sample catalogue item — fabric weight and fit to be confirmed with the store'],
+      details: ['Relaxed fit', 'Crew neckline', 'Fabric weight and fit to be confirmed with the store'],
       featured: true,
       newArrival: true,
       dateAdded: '2026-10-18'
@@ -501,7 +501,7 @@
       colors: [{ name: 'Natural', hex: '#C9B28D' }],
       images: ['assets/images/products/db-025.jpg', 'assets/images/products/db-025-detail.jpg'],
       description: 'A simple canvas tote with leather handles and a generous everyday shape. Designed for errands, markets and everything in between.',
-      details: ['Canvas sample body', 'Leather-look handles', 'Sample catalogue item — dimensions and materials to be confirmed with the store'],
+      details: ['Canvas body', 'Leather-look handles', 'Dimensions and materials to be confirmed with the store'],
       featured: false,
       newArrival: true,
       dateAdded: '2026-10-15'
@@ -509,37 +509,37 @@
   ];
 
   /*
-   * Three clearly labelled demonstration orders are preloaded so that the
-   * admin dashboard can demonstrate a realistic workflow on first open.
-   * They are built from the sample products above, never from real customers.
+   * Three clearly labelled preview order requests are preloaded so that the
+   * store dashboard can show a realistic workflow on first open.
+   * They are built from the preview products above, never from real customers.
    */
   window.DELA_SAMPLE_ORDERS = [
     {
-      reference: 'DB-DEMO-1001',
+      reference: 'DB-PRV-1001',
       status: 'Pending',
       createdDaysAgo: 1,
       createdTime: '10:15',
       customer: {
-        name: 'Sample Customer 01',
+        name: 'Preview Customer 01',
         phone: '+254 700 000 001',
-        email: 'sample01@example.com'
+        email: 'preview01@example.com'
       },
       fulfilment: 'delivery',
       county: 'Migori',
       town: 'Kehancha',
-      address: 'Sample delivery area (demonstration only)',
-      notes: 'Preloaded sample order for the admin demonstration.',
+      address: 'Preview delivery area',
+      notes: 'Preloaded preview order for the store dashboard.',
       items: [{ productId: 'db-006', size: 'M', color: 'Earth Print', qty: 1 }],
       inventoryDeducted: false,
       sample: true
     },
     {
-      reference: 'DB-DEMO-1002',
+      reference: 'DB-PRV-1002',
       status: 'Confirmed',
       createdDaysAgo: 3,
       createdTime: '16:40',
       customer: {
-        name: 'Sample Customer 02',
+        name: 'Preview Customer 02',
         phone: '+254 700 000 002',
         email: ''
       },
@@ -547,7 +547,7 @@
       county: 'Migori',
       town: 'Kehancha',
       address: '',
-      notes: 'Preloaded sample order. Collection arrangements would be confirmed by the store.',
+      notes: 'Preloaded preview order. Collection arrangements would be confirmed by the store.',
       items: [
         { productId: 'db-013', size: '42', color: 'White / Blue', qty: 1 },
         { productId: 'db-024', size: 'M', color: 'White', qty: 2 }
@@ -556,20 +556,20 @@
       sample: true
     },
     {
-      reference: 'DB-DEMO-1003',
+      reference: 'DB-PRV-1003',
       status: 'Completed',
       createdDaysAgo: 6,
       createdTime: '12:05',
       customer: {
-        name: 'Sample Customer 03',
+        name: 'Preview Customer 03',
         phone: '+254 700 000 003',
-        email: 'sample03@example.com'
+        email: 'preview03@example.com'
       },
       fulfilment: 'delivery',
       county: 'Migori',
       town: 'Kehancha',
-      address: 'Sample delivery area (demonstration only)',
-      notes: 'Preloaded sample order for the admin demonstration.',
+      address: 'Preview delivery area',
+      notes: 'Preloaded preview order for the store dashboard.',
       items: [
         { productId: 'db-019', size: 'One Size', color: 'Tan', qty: 1 },
         { productId: 'db-021', size: 'One Size', color: 'Black / Gold', qty: 1 }

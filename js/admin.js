@@ -1,6 +1,6 @@
 /*
- * DE LA BOSS OUTFITS — demonstration admin dashboard
- * Hash-routed, LocalStorage-backed management of sample products,
+ * DE LA BOSS OUTFITS - preview store dashboard
+ * Hash-routed, LocalStorage-backed management of preview products,
  * inventory, orders, customers and store settings. Not production-secure.
  */
 (function () {
@@ -152,10 +152,10 @@
     const metricsHtml = '<div class="metric-grid">' +
       metricCard('Total orders', DB.formatNumber(metrics.totalOrders), metrics.pending + ' pending review', 'receipt') +
       metricCard('Pending', DB.formatNumber(metrics.pending), 'Needs a status decision', 'info') +
-      metricCard('Catalogue', DB.formatNumber(metrics.products), 'Sample products saved', 'shirt') +
+      metricCard('Catalogue', DB.formatNumber(metrics.products), 'Products saved', 'shirt') +
       metricCard('Low stock', DB.formatNumber(metrics.lowStock), metrics.outOfStock + ' sold out', 'box') +
-      metricCard('Demo order value', DB.formatKsh(metrics.totalValue), 'Non-cancelled sample orders', 'sparkle') +
-      metricCard('Customers', DB.formatNumber(customers.length), 'Derived from demo orders', 'users') +
+      metricCard('Order value', DB.formatKsh(metrics.totalValue), 'Non-cancelled order requests', 'sparkle') +
+      metricCard('Customers', DB.formatNumber(customers.length), 'Derived from order requests', 'users') +
     '</div>';
 
     const recentOrders = orders.slice(0, 5).map(function (order) {
@@ -185,7 +185,7 @@
 
     target.innerHTML =
       '<div class="admin-page-head">' +
-        '<div><h2>THE WORKSPACE, AT A GLANCE.</h2><p>Sample orders, catalogue health and recent demonstration activity. All figures are computed from LocalStorage data in this browser.</p></div>' +
+        '<div><h2>THE WORKSPACE, AT A GLANCE.</h2><p>Order requests, catalogue health and recent activity. All figures are computed from LocalStorage data in this browser.</p></div>' +
         '<div class="admin-page-head__actions">' +
           '<a class="btn btn--dark" href="#orders">Review orders</a>' +
           '<button class="btn btn--ghost" type="button" data-export-orders>Export orders CSV</button>' +
@@ -193,17 +193,17 @@
       '</div>' +
       metricsHtml +
       '<div class="admin-grid-2">' +
-        '<div class="admin-panel"><div class="admin-panel__head"><h3>Recent sample orders</h3><a href="#orders">All orders</a></div><div class="admin-panel__body admin-panel__body--flush">' +
-          (recentOrders || emptyBlock('No orders yet', 'Demonstration orders will appear here after checkout.')) +
+        '<div class="admin-panel"><div class="admin-panel__head"><h3>Recent order requests</h3><a href="#orders">All orders</a></div><div class="admin-panel__body admin-panel__body--flush">' +
+          (recentOrders || emptyBlock('No orders yet', 'Order requests will appear here after checkout.')) +
         '</div></div>' +
         '<div class="admin-panel"><div class="admin-panel__head"><h3>Inventory alerts</h3><a href="#inventory">Manage stock</a></div><div class="admin-panel__body admin-panel__body--flush">' +
-          (alertRows || emptyBlock('Stock looks healthy', 'No sample products are at or below the low-stock threshold.')) +
+          (alertRows || emptyBlock('Stock looks healthy', 'No products are at or below the low-stock threshold.')) +
         '</div></div>' +
       '</div>' +
       '<div class="admin-panel"><div class="admin-panel__head"><h3>Recent activity</h3><button type="button" data-export-activity>Export log</button></div><div class="admin-panel__body admin-panel__body--flush">' +
-        (activityRows || emptyBlock('No activity yet', 'Admin actions and demonstration orders will be recorded here.')) +
+        (activityRows || emptyBlock('No activity yet', 'Admin actions and order requests will be recorded here.')) +
       '</div></div>' +
-      '<p class="admin-note"><strong>Inventory policy:</strong> sample stock is deducted when an order moves to Confirmed, Processing, Ready for Collection or Completed. It is returned if the order moves back to Pending or Cancelled, or is deleted. Status changes are blocked if stock is insufficient.</p>';
+      '<p class="admin-note"><strong>Inventory policy:</strong> stock is deducted when an order moves to Confirmed, Processing, Ready for Collection or Completed. It is returned if the order moves back to Pending or Cancelled, or is deleted. Status changes are blocked if stock is insufficient.</p>';
   }
 
   /* -----------------------------------------------------------------------
@@ -241,7 +241,7 @@
       const image = (product.images && product.images[0]) || 'assets/images/placeholder.svg';
       return '<tr>' +
         '<td><div class="admin-product-cell">' +
-          '<img class="admin-thumb" src="' + attr(DB.safeImageUrl(image)) + '" alt="' + attr(product.name + ' sample product image') + '" width="72" height="90" loading="lazy">' +
+          '<img class="admin-thumb" src="' + attr(DB.safeImageUrl(image)) + '" alt="' + attr(product.name + ' product image') + '" width="72" height="90" loading="lazy">' +
           '<div><strong><a href="product.html?id=' + encodeURIComponent(product.id) + '" target="_blank" rel="noopener">' + escape(product.name) + '</a></strong>' +
           '<small>' + escape(product.id) + ' · ' + escape(product.subcategory || 'Uncategorised') + '</small></div>' +
         '</div></td>' +
@@ -261,7 +261,7 @@
 
     target.innerHTML =
       '<div class="admin-page-head">' +
-        '<div><h2>THE SAMPLE CATALOGUE.</h2><p>' + total + ' demonstration products. Add, edit or remove sample pieces. Changes are saved in this browser and appear on the storefront immediately.</p></div>' +
+        '<div><h2>THE CATALOGUE.</h2><p>' + total + ' products. Add, edit or remove pieces. Changes are saved in this browser and appear on the storefront immediately.</p></div>' +
         '<div class="admin-page-head__actions">' +
           '<button class="btn btn--dark" type="button" data-add-product>Add product</button>' +
           '<button class="btn btn--ghost" type="button" data-export-products>Export CSV</button>' +
@@ -284,11 +284,11 @@
         '<span class="admin-toolbar__count">' + products.length + ' of ' + total + ' products</span>' +
       '</div>' +
       (products.length
-        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Sample products</caption><thead><tr>' +
+        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Products</caption><thead><tr>' +
             '<th scope="col">Product</th><th scope="col">Category</th><th scope="col">Price</th><th scope="col">Stock</th><th scope="col">State</th><th scope="col" class="is-right">Actions</th>' +
           '</tr></thead><tbody>' + rows + '</tbody></table></div>'
         : '<div class="admin-table-wrap">' + emptyBlock('No products match', 'Try a different search, category or stock filter.') + '</div>') +
-      '<p class="admin-note">Sample products, prices and images are demonstration content. Uploaded images are resized and saved as LocalStorage data URLs; large libraries can exhaust browser storage.</p>';
+      '<p class="admin-note">Product prices and images are preview content. Uploaded images are resized and saved as LocalStorage data URLs; large libraries can exhaust browser storage.</p>';
   }
 
   function parseColorLines(value) {
@@ -371,7 +371,7 @@
     const DB = window.DelaBoss;
     const product = id ? DB.getProduct(id) : null;
     if (id && !product) {
-      DB.toast('That sample product could not be found.', { type: 'error' });
+      DB.toast('That product could not be found.', { type: 'error' });
       return;
     }
     state.pendingImage = null;
@@ -386,7 +386,7 @@
 
     const dialogHtml =
       '<div class="admin-dialog__head">' +
-        '<div><h2 id="adminDialogTitle">' + (product ? 'Edit sample product' : 'Add sample product') + '</h2><p>Demo catalogue entry · Stored in this browser only.</p></div>' +
+        '<div><h2 id="adminDialogTitle">' + (product ? 'Edit product' : 'Add product') + '</h2><p>Preview catalogue entry · Stored in this browser only.</p></div>' +
         '<button class="admin-dialog__close" type="button" data-dialog-close aria-label="Close dialog">' + DB.icon('close') + '</button>' +
       '</div>' +
       '<form class="admin-form" id="productForm" novalidate>' +
@@ -398,7 +398,7 @@
           '</div>' +
           '<div class="field-row">' +
             '<div class="field"><label for="productPrice">Price (KSh) <span class="optional">required</span></label><input id="productPrice" type="number" min="1" step="50" value="' + attr(product ? product.price : '') + '" required></div>' +
-            '<div class="field"><label for="productCompareAt">Compare-at price (KSh) <span class="optional">optional</span></label><input id="productCompareAt" type="number" min="0" step="50" value="' + attr(product && product.compareAt ? product.compareAt : '') + '" placeholder="Leave empty unless on sample sale"></div>' +
+            '<div class="field"><label for="productCompareAt">Compare-at price (KSh) <span class="optional">optional</span></label><input id="productCompareAt" type="number" min="0" step="50" value="' + attr(product && product.compareAt ? product.compareAt : '') + '" placeholder="Leave empty unless on offer"></div>' +
           '</div>' +
           '<div class="field-row">' +
             '<div class="field"><label for="productStock">Stock units</label><input id="productStock" type="number" min="0" step="1" value="' + attr(product ? product.stock : 5) + '"></div>' +
@@ -431,7 +431,7 @@
         '</div>' +
         '<div class="admin-dialog__actions">' +
           '<button class="btn btn--ghost" type="button" data-dialog-close>Cancel</button>' +
-          '<button class="btn btn--dark" type="submit">' + (product ? 'Save changes' : 'Add sample product') + '</button>' +
+          '<button class="btn btn--dark" type="submit">' + (product ? 'Save changes' : 'Add product') + '</button>' +
         '</div>' +
       '</form>';
 
@@ -498,9 +498,9 @@
 
     if (!name || name.length < 2) return showError('Enter a product name with at least two characters.');
     if (!category) return showError('Choose a category.');
-    if (!Number.isFinite(price) || price <= 0) return showError('Enter a sample price greater than zero.');
+    if (!Number.isFinite(price) || price <= 0) return showError('Enter a price greater than zero.');
     if (compareAt !== null && (!Number.isFinite(compareAt) || compareAt < 0)) return showError('Compare-at price must be zero or a positive number.');
-    if (compareAt !== null && compareAt > 0 && compareAt <= price) return showError('Compare-at price must be higher than the sample price.');
+    if (compareAt !== null && compareAt > 0 && compareAt <= price) return showError('Compare-at price must be higher than the price.');
     if (!Number.isFinite(stock) || stock < 0 || stock > 9999) return showError('Stock must be a whole number between 0 and 9,999.');
     if (!description || description.length < 10) return showError('Add a description of at least 10 characters.');
 
@@ -530,7 +530,7 @@
     const data = {
       name: name,
       category: category,
-      subcategory: subcategory || 'Sample piece',
+      subcategory: subcategory || 'Piece',
       price: price,
       compareAt: compareAt && compareAt > 0 ? compareAt : null,
       stock: stock,
@@ -538,7 +538,7 @@
       colors: colors,
       images: images,
       description: description,
-      details: details.length ? details : ['Sample catalogue item — details to be confirmed with the store'],
+      details: details.length ? details : ['Details to be confirmed with the store'],
       featured: byId('productFeatured').checked,
       newArrival: byId('productNew').checked,
       dateAdded: existing && existing.dateAdded ? existing.dateAdded : today
@@ -556,23 +556,23 @@
     }
 
     if (!DB.saveProducts(products)) {
-      return showError('The catalogue could not be saved. Browser storage may be full — try a smaller image or reset the demo.');
+      return showError('The catalogue could not be saved. Browser storage may be full — try a smaller image or reset the preview.');
     }
-    DB.addActivity('catalogue', 'Sample product “' + name + '” was ' + (existing ? 'updated' : 'added') + ' in the demonstration catalogue.');
+    DB.addActivity('catalogue', 'Product “' + name + '” was ' + (existing ? 'updated' : 'added') + ' in the catalogue.');
     if (dialog) dialog.close();
     renderProducts();
     updateNavBadges();
-    DB.toast(existing ? 'Sample product updated.' : 'Sample product added to the catalogue.', { type: 'success' });
+    DB.toast(existing ? 'Product updated.' : 'Product added to the catalogue.', { type: 'success' });
   }
 
   function deleteProduct(id) {
     const DB = window.DelaBoss;
     const product = DB.getProduct(id);
     if (!product) {
-      DB.toast('That sample product could not be found.', { type: 'error' });
+      DB.toast('That product could not be found.', { type: 'error' });
       return;
     }
-    const message = 'Delete “' + product.name + '” from the demonstration catalogue?\n\nExisting demo orders keep their item snapshots. Any matching lines in the current shopping bag will also be removed.';
+    const message = 'Delete “' + product.name + '” from the catalogue?\n\nExisting order requests keep their item snapshots. Any matching lines in the current shopping bag will also be removed.';
     if (!window.confirm(message)) return;
     const products = DB.getProducts().filter(function (candidate) { return candidate.id !== id; });
     if (!DB.saveProducts(products)) {
@@ -582,10 +582,10 @@
     const cart = DB.getCart();
     const nextCart = cart.filter(function (line) { return line.productId !== id; });
     if (nextCart.length !== cart.length) DB.saveCart(nextCart);
-    DB.addActivity('catalogue', 'Sample product “' + product.name + '” was deleted from the demonstration catalogue.');
+    DB.addActivity('catalogue', 'Product “' + product.name + '” was deleted from the catalogue.');
     renderProducts();
     updateNavBadges();
-    DB.toast('Sample product deleted. Order snapshots were preserved.', { type: 'success' });
+    DB.toast('Product deleted. Order snapshots were preserved.', { type: 'success' });
   }
 
   /* -----------------------------------------------------------------------
@@ -630,7 +630,7 @@
           '<input type="number" min="0" max="9999" step="1" value="' + stock + '" data-stock-input="' + attr(product.id) + '" aria-label="Stock units for ' + attr(product.name) + '">' +
           '<button type="button" data-stock-plus="' + attr(product.id) + '" aria-label="Increase stock for ' + attr(product.name) + '">' + DB.icon('plus') + '</button>' +
         '</span></td>' +
-        '<td>' + (stock <= threshold ? '<span class="admin-muted">At or below demo threshold (' + threshold + ')</span>' : '<span class="admin-muted">Above demo threshold (' + threshold + ')</span>') + '</td>' +
+        '<td>' + (stock <= threshold ? '<span class="admin-muted">At or below low-stock threshold (' + threshold + ')</span>' : '<span class="admin-muted">Above low-stock threshold (' + threshold + ')</span>') + '</td>' +
         '<td><div class="admin-actions">' +
           iconButton('edit-product', product.id, 'Edit ' + product.name, 'edit') +
         '</div></td>' +
@@ -639,16 +639,16 @@
 
     target.innerHTML =
       '<div class="admin-page-head">' +
-        '<div><h2>SAMPLE INVENTORY.</h2><p>Adjust demonstration stock one unit at a time or type an exact figure. The low-stock threshold is currently <strong>' + threshold + '</strong> and can be changed in Settings.</p></div>' +
+        '<div><h2>INVENTORY.</h2><p>Adjust stock one unit at a time or type an exact figure. The low-stock threshold is currently <strong>' + threshold + '</strong> and can be changed in Settings.</p></div>' +
         '<div class="admin-page-head__actions">' +
           '<button class="btn btn--ghost" type="button" data-export-inventory>Export inventory CSV</button>' +
           '<a class="btn btn--ghost" href="#settings">Stock settings</a>' +
         '</div>' +
       '</div>' +
       '<div class="metric-grid">' +
-        metricCard('Units on hand', DB.formatNumber(totalUnits), 'All sample products combined', 'box') +
+        metricCard('Units on hand', DB.formatNumber(totalUnits), 'All products combined', 'box') +
         metricCard('Low stock', DB.formatNumber(low), 'Above zero, at or below threshold', 'info') +
-        metricCard('Sold out', DB.formatNumber(out), 'Zero units in the demo', 'trash') +
+        metricCard('Sold out', DB.formatNumber(out), 'Zero units in preview', 'trash') +
         metricCard('Products', DB.formatNumber(all.length), 'Total catalogue entries', 'shirt') +
       '</div>' +
       '<div class="admin-toolbar" style="margin-top:14px">' +
@@ -662,11 +662,11 @@
         '<span class="admin-toolbar__count">' + products.length + ' of ' + all.length + ' products</span>' +
       '</div>' +
       (products.length
-        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Sample inventory</caption><thead><tr>' +
+        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Inventory</caption><thead><tr>' +
             '<th scope="col">Product</th><th scope="col">State</th><th scope="col">Stock units</th><th scope="col">Threshold</th><th scope="col" class="is-right">Actions</th>' +
           '</tr></thead><tbody>' + rows + '</tbody></table></div>'
         : '<div class="admin-table-wrap">' + emptyBlock('Nothing in this filter', 'Choose another stock filter to see inventory.') + '</div>') +
-      '<p class="admin-note"><strong>Demonstration rule:</strong> stock edits are independent of existing orders. Changing a status on the Orders page may deduct or return sample stock — always review the order workflow before editing inventory.</p>';
+      '<p class="admin-note"><strong>Inventory rule:</strong> stock edits are independent of existing orders. Changing a status on the Orders page may deduct or return stock — always review the order workflow before editing inventory.</p>';
 
     if (focus) {
       let node = null;
@@ -732,7 +732,7 @@
     const rows = orders.map(function (order) {
       const itemCount = (order.items || []).reduce(function (total, item) { return total + (Number(item.qty) || 0); }, 0);
       return '<tr>' +
-        '<td class="is-nowrap"><strong>' + escape(order.reference) + '</strong>' + (order.sample ? '<br><span class="admin-muted">Preloaded sample</span>' : '') + '</td>' +
+        '<td class="is-nowrap"><strong>' + escape(order.reference) + '</strong>' + (order.sample ? '<br><span class="admin-muted">Preloaded preview</span>' : '') + '</td>' +
         '<td><div class="admin-product-cell" style="min-width:140px"><div><strong>' + escape(order.customer.name) + '</strong><small>' + escape(order.customer.phone || 'No phone') + '</small></div></div></td>' +
         '<td class="is-nowrap">' + DB.formatDate(order.createdAt) + '</td>' +
         '<td>' + itemCount + '</td>' +
@@ -744,7 +744,7 @@
 
     target.innerHTML =
       '<div class="admin-page-head">' +
-        '<div><h2>DEMO ORDERS.</h2><p>Three preloaded sample orders plus any orders placed through the demonstration checkout. Status changes follow the sample inventory policy and are recorded in each order timeline.</p></div>' +
+        '<div><h2>ORDER REQUESTS.</h2><p>Three preloaded order requests plus any requests placed through the preview checkout. Status changes follow the inventory policy and are recorded in each order timeline.</p></div>' +
         '<div class="admin-page-head__actions">' +
           '<button class="btn btn--ghost" type="button" data-export-orders>Export orders CSV</button>' +
           '<a class="btn btn--ghost" href="checkout.html">Try checkout</a>' +
@@ -754,7 +754,7 @@
         metricCard('All orders', DB.formatNumber(metrics.totalOrders), metrics.cancelled + ' cancelled', 'receipt') +
         metricCard('Pending', DB.formatNumber(metrics.pending), 'Not yet confirmed', 'info') +
         metricCard('In progress', DB.formatNumber(metrics.confirmed + metrics.processing + metrics.ready), 'Confirmed to ready', 'box') +
-        metricCard('Completed', DB.formatNumber(metrics.completed), 'Demo workflow complete', 'check') +
+        metricCard('Completed', DB.formatNumber(metrics.completed), 'Workflow complete', 'check') +
       '</div>' +
       '<div class="admin-toolbar" style="margin-top:14px">' +
         '<div class="admin-search">' + DB.icon('search') +
@@ -766,18 +766,18 @@
         '<span class="admin-toolbar__count">' + orders.length + ' of ' + all.length + ' orders</span>' +
       '</div>' +
       (orders.length
-        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Demonstration orders</caption><thead><tr>' +
+        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Order requests</caption><thead><tr>' +
             '<th scope="col">Reference</th><th scope="col">Customer</th><th scope="col">Date</th><th scope="col">Qty</th><th scope="col">Total</th><th scope="col">Status</th><th scope="col" class="is-right">Actions</th>' +
           '</tr></thead><tbody>' + rows + '</tbody></table></div>'
         : '<div class="admin-table-wrap">' + emptyBlock('No orders match', 'Try another search or status filter.') + '</div>') +
-      '<p class="admin-note"><strong>Sample data:</strong> preloaded orders use fictional customers. Demonstration checkout orders are created only in this browser. Nothing here is a real transaction, sale or fulfilment record.</p>';
+      '<p class="admin-note"><strong>Preview data:</strong> preloaded order requests use fictional customers. Preview checkout requests are created only in this browser. Nothing here is a real transaction, sale or fulfilment record.</p>';
   }
 
   function openOrderDialog(reference) {
     const DB = window.DelaBoss;
     const order = DB.findOrder(reference);
     if (!order) {
-      DB.toast('That demonstration order could not be found.', { type: 'error' });
+      DB.toast('That order request could not be found.', { type: 'error' });
       return;
     }
     const delivery = order.fulfilment === 'delivery';
@@ -801,7 +801,7 @@
 
     const html =
       '<div class="admin-dialog__head">' +
-        '<div><h2 id="adminDialogTitle">' + escape(order.reference) + '</h2><p>' + DB.formatDateTime(order.createdAt) + ' · ' + (order.sample ? 'Preloaded sample order' : 'Created by demo checkout') + '</p></div>' +
+        '<div><h2 id="adminDialogTitle">' + escape(order.reference) + '</h2><p>' + DB.formatDateTime(order.createdAt) + ' · ' + (order.sample ? 'Preloaded preview order' : 'Created by preview checkout') + '</p></div>' +
         '<button class="admin-dialog__close" type="button" data-dialog-close aria-label="Close order details">' + DB.icon('close') + '</button>' +
       '</div>' +
       '<div class="admin-dialog__body">' +
@@ -823,7 +823,7 @@
         '<div class="order-items">' + items + '</div>' +
         '<div class="order-totals">' +
           '<div><span>Subtotal</span><strong>' + DB.formatKsh(order.subtotal) + '</strong></div>' +
-          '<div><span>Delivery (demo)</span><strong>' + (Number(order.deliveryFee) > 0 ? DB.formatKsh(order.deliveryFee) : '—') + '</strong></div>' +
+          '<div><span>Delivery</span><strong>' + (Number(order.deliveryFee) > 0 ? DB.formatKsh(order.deliveryFee) : '—') + '</strong></div>' +
           '<div><span>Estimated total</span><strong>' + DB.formatKsh(order.total) + '</strong></div>' +
         '</div>' +
         '<form class="admin-status-form" id="orderStatusForm" novalidate>' +
@@ -833,10 +833,10 @@
           '<p class="form-error" id="orderStatusError" role="alert" hidden></p>' +
         '</form>' +
         '<div class="admin-history">' + history + '</div>' +
-        '<p class="admin-dialog-note">Moving to Confirmed, Processing, Ready for Collection or Completed deducts sample stock once. Moving back to Pending or Cancelled returns it. A shortage blocks the change.</p>' +
+        '<p class="admin-dialog-note">Moving to Confirmed, Processing, Ready for Collection or Completed deducts stock once. Moving back to Pending or Cancelled returns it. A shortage blocks the change.</p>' +
       '</div>' +
       '<div class="admin-dialog__actions">' +
-        '<button class="btn btn--ghost btn--danger" type="button" id="deleteOrderButton">Delete demo order</button>' +
+        '<button class="btn btn--ghost btn--danger" type="button" id="deleteOrderButton">Delete order request</button>' +
         '<button class="btn btn--ghost" type="button" data-dialog-close>Close</button>' +
       '</div>';
 
@@ -866,8 +866,8 @@
     const deleteButton = byId('deleteOrderButton');
     if (deleteButton) {
       deleteButton.addEventListener('click', function () {
-        const extra = order.inventoryDeducted ? '\n\nSample inventory for this order will be returned to stock.' : '';
-        if (!window.confirm('Delete demonstration order ' + order.reference + '? This cannot be undone.' + extra)) return;
+        const extra = order.inventoryDeducted ? '\n\nPreview inventory for this order will be returned to stock.' : '';
+        if (!window.confirm('Delete order request ' + order.reference + '? This cannot be undone.' + extra)) return;
         const result = DB.deleteOrder(order.reference);
         if (!result.ok) {
           DB.toast(result.message, { type: 'error' });
@@ -902,7 +902,7 @@
     const all = DB.customersFromOrders();
     const rows = customers.map(function (customer) {
       return '<tr>' +
-        '<td><strong>' + escape(customer.name) + '</strong>' + (customer.sample ? '<br><span class="admin-muted">Preloaded sample customer</span>' : '') + '</td>' +
+        '<td><strong>' + escape(customer.name) + '</strong>' + (customer.sample ? '<br><span class="admin-muted">Preloaded preview customer</span>' : '') + '</td>' +
         '<td class="is-nowrap">' + escape(customer.phone || '—') + '</td>' +
         '<td>' + escape(customer.email || '—') + '</td>' +
         '<td>' + customer.orderCount + '</td>' +
@@ -916,7 +916,7 @@
 
     target.innerHTML =
       '<div class="admin-page-head">' +
-        '<div><h2>DEMO CUSTOMERS.</h2><p>Customers are derived from demonstration orders rather than stored as a separate customer database. Spending excludes cancelled orders and is sample data only.</p></div>' +
+        '<div><h2>CUSTOMERS.</h2><p>Customers are derived from order requests rather than stored as a separate customer database. Spending excludes cancelled requests and is preview data only.</p></div>' +
         '<div class="admin-page-head__actions">' +
           '<button class="btn btn--ghost" type="button" data-export-customers>Export customers CSV</button>' +
         '</div>' +
@@ -929,11 +929,11 @@
         '<span class="admin-toolbar__count">' + customers.length + ' of ' + all.length + ' customers</span>' +
       '</div>' +
       (customers.length
-        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Demonstration customers</caption><thead><tr>' +
-            '<th scope="col">Customer</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Orders</th><th scope="col">Demo spend</th><th scope="col">Last order</th><th scope="col" class="is-right">Actions</th>' +
+        ? '<div class="admin-table-wrap"><table class="admin-table"><caption>Customers</caption><thead><tr>' +
+            '<th scope="col">Customer</th><th scope="col">Phone</th><th scope="col">Email</th><th scope="col">Orders</th><th scope="col">Spend</th><th scope="col">Last order</th><th scope="col" class="is-right">Actions</th>' +
           '</tr></thead><tbody>' + rows + '</tbody></table></div>'
         : '<div class="admin-table-wrap">' + emptyBlock('No customers match', 'Try a different name, phone number or email address.') + '</div>') +
-      '<p class="admin-note"><strong>Privacy note:</strong> all customer records here are either preloaded fictional examples or details entered locally during the demo. They are not sent to the business and are removed when demo data is reset or site storage is cleared.</p>';
+      '<p class="admin-note"><strong>Privacy note:</strong> all customer records here are either preloaded fictional examples or details entered locally during the preview. They are not sent to the business and are removed when preview data is reset or site storage is cleared.</p>';
   }
 
   /* -----------------------------------------------------------------------
@@ -947,7 +947,7 @@
     const s = DB.getSettings();
     target.innerHTML =
       '<div class="admin-page-head">' +
-        '<div><h2>DEMO SETTINGS.</h2><p>These values feed the storefront announcement bar, contact links, WhatsApp configuration, low-stock threshold and demonstration delivery fee. Changes are stored in this browser.</p></div>' +
+        '<div><h2>SETTINGS.</h2><p>These values feed the storefront announcement bar, contact links, WhatsApp configuration, low-stock threshold and preview delivery fee. Changes are stored in this browser.</p></div>' +
       '</div>' +
       '<form id="settingsForm" novalidate>' +
         '<div class="admin-settings-grid">' +
@@ -961,12 +961,12 @@
             '<div class="field"><label for="settingsPhonePrimary">Primary phone</label><input id="settingsPhonePrimary" type="tel" value="' + attr(s.phonePrimary) + '"></div>' +
             '<div class="field"><label for="settingsPhoneSecondary">Secondary phone</label><input id="settingsPhoneSecondary" type="tel" value="' + attr(s.phoneSecondary) + '"></div>' +
             '<div class="field"><label for="settingsWhatsapp">WhatsApp number</label><input id="settingsWhatsapp" type="tel" value="' + attr(s.whatsapp) + '"><p class="field__help">Used by every WhatsApp button. Kenyan numbers are normalised to 2547XXXXXXXX or 2541XXXXXXXX.</p></div>' +
-            '<p class="field__help" style="margin-top:10px">These are supplied business numbers in the concept. Confirm them with the owner before any production launch.</p>' +
+            '<p class="field__help" style="margin-top:10px">These are supplied business numbers in this preview. Confirm them with the owner before any production launch.</p>' +
           '</section>' +
           '<section class="admin-form-card"><h3>Inventory &amp; delivery</h3>' +
             '<div class="field"><label for="settingsLowStock">Low-stock threshold</label><input id="settingsLowStock" type="number" min="0" max="100" step="1" value="' + attr(s.lowStockThreshold) + '"><p class="field__help">Products at or below this figure are flagged in the storefront and dashboard.</p></div>' +
-            '<div class="field"><label for="settingsDeliveryFee">Demo delivery fee (KSh)</label><input id="settingsDeliveryFee" type="number" min="0" max="100000" step="50" value="' + attr(s.deliveryFee) + '"><p class="field__help">Set to 0 to show “to be agreed” in the checkout. This is not a real quote.</p></div>' +
-            '<div class="field"><label for="settingsCurrency">Currency</label><input id="settingsCurrency" type="text" value="' + attr(s.currency || 'KES') + '" disabled><p class="field__help">KSh formatting is fixed in this demonstration.</p></div>' +
+            '<div class="field"><label for="settingsDeliveryFee">Preview delivery fee (KSh)</label><input id="settingsDeliveryFee" type="number" min="0" max="100000" step="50" value="' + attr(s.deliveryFee) + '"><p class="field__help">Set to 0 to show “to be agreed” in the checkout. This is not a real quote.</p></div>' +
+            '<div class="field"><label for="settingsCurrency">Currency</label><input id="settingsCurrency" type="text" value="' + attr(s.currency || 'KES') + '" disabled><p class="field__help">KSh formatting is fixed in this preview.</p></div>' +
           '</section>' +
           '<section class="admin-form-card"><h3>Configuration notes</h3>' +
             '<p class="field__help">Store name, location, phone numbers, low-stock threshold and delivery fee are centralised here. Product and order data live separately under the same LocalStorage namespace.</p>' +
@@ -976,14 +976,14 @@
         '</div>' +
         '<p class="form-error" id="settingsError" role="alert" hidden></p>' +
         '<div class="admin-settings-actions">' +
-          '<button class="btn btn--dark" type="submit">Save demo settings</button>' +
+          '<button class="btn btn--dark" type="submit">Save settings</button>' +
           '<p>Settings save locally. Storefront pages refresh their contact details when reloaded.</p>' +
         '</div>' +
       '</form>' +
       '<div class="admin-danger">' +
-        '<h3>Reset all demonstration data</h3>' +
-        '<p>Restore the original 25 sample products, three preloaded sample orders, default settings and a clean bag. This deletes any products, images, orders, enquiries or settings changes saved in this browser. It cannot be undone.</p>' +
-        '<button class="btn btn--ghost" type="button" data-reset-demo>Reset demo data</button>' +
+        '<h3>Reset all preview data</h3>' +
+        '<p>Restore the original 25 products, three preloaded order requests, default settings and a clean bag. This deletes any products, images, orders, enquiries or settings changes saved in this browser. It cannot be undone.</p>' +
+        '<button class="btn btn--ghost" type="button" data-reset-demo>Reset preview data</button>' +
       '</div>' +
       '<p class="admin-note"><strong>Production warning:</strong> this dashboard has no authentication, server validation, audit trail or role permissions. A live store would need a secure backend, real inventory integration, payment handling, privacy controls and a tested order-notification workflow.</p>';
   }
@@ -1047,16 +1047,16 @@
       }
       return;
     }
-    DB.addActivity('settings', 'Demonstration store settings were updated.');
+    DB.addActivity('settings', 'Store settings were updated.');
     renderSettings();
     updateNavBadges();
-    DB.toast('Demo settings saved in this browser.', { type: 'success' });
+    DB.toast('Settings saved in this browser.', { type: 'success' });
   }
 
   function resetDemo() {
     const DB = window.DelaBoss;
-    if (!window.confirm('Reset all demonstration data?\n\nThis restores the original sample catalogue, preloaded orders and default settings. Products, uploaded images, orders, cart lines and settings changes saved in this browser will be deleted.')) return;
-    if (!window.confirm('Final confirmation: this cannot be undone. Reset the demo now?')) return;
+    if (!window.confirm('Reset all preview data?\n\nThis restores the original catalogue, preloaded order requests and default settings. Products, uploaded images, orders, cart lines and settings changes saved in this browser will be deleted.')) return;
+    if (!window.confirm('Final confirmation: this cannot be undone. Reset the preview now?')) return;
     DB.resetDemoData();
     state.productSearch = '';
     state.productCategory = 'all';
@@ -1068,7 +1068,7 @@
     state.pendingImage = null;
     state.imageCleared = false;
     route();
-    DB.toast('All demonstration data has been reset to its original sample state.', { type: 'success', duration: 6000 });
+    DB.toast('All preview data has been reset to its original state.', { type: 'success', duration: 6000 });
   }
 
   /* -----------------------------------------------------------------------
@@ -1119,7 +1119,7 @@
         product.dateAdded
       ]);
     });
-    downloadCsv('delaboss-demo-products-' + todayStamp() + '.csv', rows);
+    downloadCsv('delaboss-preview-products-' + todayStamp() + '.csv', rows);
   }
 
   function exportInventory() {
@@ -1138,7 +1138,7 @@
         product.price
       ]);
     });
-    downloadCsv('delaboss-demo-inventory-' + todayStamp() + '.csv', rows);
+    downloadCsv('delaboss-preview-inventory-' + todayStamp() + '.csv', rows);
   }
 
   function exportOrders() {
@@ -1163,12 +1163,12 @@
         order.source
       ]);
     });
-    downloadCsv('delaboss-demo-orders-' + todayStamp() + '.csv', rows);
+    downloadCsv('delaboss-preview-orders-' + todayStamp() + '.csv', rows);
   }
 
   function exportCustomers() {
     const customers = window.DelaBoss.customersFromOrders();
-    const rows = [['Name', 'Phone', 'Email', 'Orders', 'Demo spend KES', 'Last order', 'Sample customer']];
+    const rows = [['Name', 'Phone', 'Email', 'Orders', 'Spend KES', 'Last order', 'Preloaded customer']];
     customers.forEach(function (customer) {
       rows.push([
         customer.name,
@@ -1180,7 +1180,7 @@
         customer.sample ? 'Yes' : 'No'
       ]);
     });
-    downloadCsv('delaboss-demo-customers-' + todayStamp() + '.csv', rows);
+    downloadCsv('delaboss-preview-customers-' + todayStamp() + '.csv', rows);
   }
 
   function exportActivity() {
@@ -1189,7 +1189,7 @@
     activity.forEach(function (item) {
       rows.push([item.at, item.type, item.message]);
     });
-    downloadCsv('delaboss-demo-activity-' + todayStamp() + '.csv', rows);
+    downloadCsv('delaboss-preview-activity-' + todayStamp() + '.csv', rows);
   }
 
   /* -----------------------------------------------------------------------

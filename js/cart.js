@@ -22,12 +22,12 @@
     const DB = window.DelaBoss;
     if (!line.product) {
       return '<article class="cart-row" data-cart-line="' + DB.escapeAttr(line.key) + '">' +
-        '<div class="cart-row__media"><img src="assets/images/placeholder.svg" alt="Unavailable sample product placeholder" width="232" height="290"></div>' +
+        '<div class="cart-row__media"><img src="assets/images/placeholder.svg" alt="Unavailable product placeholder" width="232" height="290"></div>' +
         '<div class="cart-row__body">' +
           '<div class="cart-row__top">' +
             '<div>' +
               '<p class="cart-row__category">Unavailable</p>' +
-              '<h3 class="cart-row__title">This sample piece is no longer in the catalogue</h3>' +
+              '<h3 class="cart-row__title">This piece is no longer in the catalogue</h3>' +
               '<div class="cart-row__options"><span>Size <strong>' + DB.escapeHtml(line.size || '—') + '</strong></span><span>Colour <strong>' + DB.escapeHtml(line.color || '—') + '</strong></span></div>' +
             '</div>' +
             '<div class="cart-row__price"><span class="cart-row__price-sub">Remove to continue</span></div>' +
@@ -48,23 +48,23 @@
     const low = !soldOut && (maxForLine <= threshold);
     let stockMessage = '';
     if (soldOut) {
-      stockMessage = '<p class="cart-row__stock cart-row__stock--out">Out of stock in this demonstration. Remove this line to continue.</p>';
+      stockMessage = '<p class="cart-row__stock cart-row__stock--out">Out of stock. Remove this line to continue.</p>';
     } else if (maxReached) {
-      stockMessage = '<p class="cart-row__stock">Maximum available sample quantity reached.</p>';
+      stockMessage = '<p class="cart-row__stock">Maximum available quantity reached.</p>';
     } else if (low) {
-      stockMessage = '<p class="cart-row__stock">Low sample stock · ' + maxForLine + ' unit' + (maxForLine === 1 ? '' : 's') + ' available for this piece.</p>';
+      stockMessage = '<p class="cart-row__stock">Low stock · ' + maxForLine + ' unit' + (maxForLine === 1 ? '' : 's') + ' available for this piece.</p>';
     }
 
     return '<article class="cart-row' + (soldOut ? ' is-unavailable' : '') + '" data-cart-line="' + DB.escapeAttr(line.key) + '">' +
       '<div class="cart-row__media">' +
         '<a href="product.html?id=' + encodeURIComponent(product.id) + '" aria-label="View ' + DB.escapeAttr(product.name) + '">' +
-          '<img src="' + DB.escapeAttr(DB.safeImageUrl(image)) + '" alt="' + DB.escapeAttr(product.name + ' — sample product photograph') + '" width="232" height="290" loading="lazy">' +
+          '<img src="' + DB.escapeAttr(DB.safeImageUrl(image)) + '" alt="' + DB.escapeAttr(product.name + ' — product photograph') + '" width="232" height="290" loading="lazy">' +
         '</a>' +
       '</div>' +
       '<div class="cart-row__body">' +
         '<div class="cart-row__top">' +
           '<div>' +
-            '<p class="cart-row__category">' + DB.escapeHtml(product.category || 'Sample') + ' · ' + DB.escapeHtml(product.subcategory || 'Piece') + '</p>' +
+            '<p class="cart-row__category">' + DB.escapeHtml(product.category || 'Collection') + ' · ' + DB.escapeHtml(product.subcategory || 'Piece') + '</p>' +
             '<h3 class="cart-row__title"><a href="product.html?id=' + encodeURIComponent(product.id) + '">' + DB.escapeHtml(product.name) + '</a></h3>' +
             '<div class="cart-row__options">' +
               '<span>Size <strong>' + DB.escapeHtml(line.size || 'One Size') + '</strong></span>' +
@@ -223,7 +223,7 @@
           changeQty(key, 1);
         } else if (action === 'remove') {
           DB.removeCartItem(key);
-          DB.toast('Sample piece removed from your bag.', { type: 'info' });
+          DB.toast('Piece removed from your bag.', { type: 'info' });
           render();
         }
       });
@@ -239,9 +239,9 @@
     if (clear) {
       clear.addEventListener('click', function () {
         if (!DB.getCart().length) return;
-        if (window.confirm('Clear every sample piece from your bag? This only affects this browser.')) {
+        if (window.confirm('Clear every piece from your bag? This only affects this browser.')) {
           DB.clearCart();
-          DB.toast('Your demonstration bag has been cleared.', { type: 'info' });
+          DB.toast('Your bag has been cleared.', { type: 'info' });
           render();
         }
       });
@@ -261,7 +261,7 @@
     if (whatsapp) {
       whatsapp.addEventListener('click', function () {
         if (!DB.getCart().length) {
-          DB.toast('Add a sample piece before preparing a WhatsApp enquiry.', { type: 'error' });
+          DB.toast('Add a piece before preparing a WhatsApp enquiry.', { type: 'error' });
           return;
         }
         DB.openWhatsApp(DB.getCartWhatsAppMessage());

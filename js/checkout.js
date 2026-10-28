@@ -1,5 +1,5 @@
 /*
- * DE LA BOSS OUTFITS — demonstration checkout
+ * DE LA BOSS OUTFITS — preview checkout
  * Kenyan phone validation, fulfilment choice, local order creation,
  * confirmation screen and WhatsApp handoff. No payment, no backend.
  */
@@ -60,11 +60,11 @@
     if (items) {
       items.innerHTML = lines.map(function (line) {
         if (!line.product) {
-          return '<div class="checkout-mini-item"><div class="checkout-mini-item__media"><img src="assets/images/placeholder.svg" alt="Unavailable sample product placeholder" width="96" height="120"></div><div><p class="checkout-mini-item__name">Unavailable sample piece</p><p class="checkout-mini-item__options">Remove in your bag</p></div><span class="checkout-mini-item__price">—</span></div>';
+          return '<div class="checkout-mini-item"><div class="checkout-mini-item__media"><img src="assets/images/placeholder.svg" alt="Unavailable product placeholder" width="96" height="120"></div><div><p class="checkout-mini-item__name">Unavailable piece</p><p class="checkout-mini-item__options">Remove in your bag</p></div><span class="checkout-mini-item__price">—</span></div>';
         }
         return '<div class="checkout-mini-item">' +
           '<div class="checkout-mini-item__media">' +
-            '<img src="' + DB.escapeAttr(DB.safeImageUrl((line.product.images && line.product.images[0]) || '')) + '" alt="' + DB.escapeAttr(line.product.name + ' — sample product photograph') + '" width="96" height="120" loading="lazy">' +
+            '<img src="' + DB.escapeAttr(DB.safeImageUrl((line.product.images && line.product.images[0]) || '')) + '" alt="' + DB.escapeAttr(line.product.name + ' — product photograph') + '" width="96" height="120" loading="lazy">' +
             '<span class="checkout-mini-item__qty" aria-label="Quantity ' + line.qty + '">' + line.qty + '</span>' +
           '</div>' +
           '<div>' +
@@ -85,7 +85,7 @@
       if (delivery === 'collection') {
         deliveryNode.textContent = 'Collection · no fee';
       } else if (fee > 0) {
-        deliveryNode.textContent = DB.formatKsh(fee) + ' · demo fee';
+        deliveryNode.textContent = DB.formatKsh(fee) + ' · delivery fee';
       } else {
         deliveryNode.textContent = 'To be agreed';
       }
@@ -139,7 +139,7 @@
     }
 
     if (!name.value.trim() || name.value.trim().length < 2) {
-      mark(fieldError('checkoutName', 'nameError', 'Enter the name for this demonstration order.'));
+      mark(fieldError('checkoutName', 'nameError', 'Enter the name for this order request.'));
     }
     if (!DB.validateKenyanPhone(phone.value)) {
       mark(fieldError('checkoutPhone', 'phoneError', 'Enter a valid Kenyan mobile number, for example 0712 345 678 or +254 712 345 678.'));
@@ -148,13 +148,13 @@
       mark(fieldError('checkoutEmail', 'emailError', 'Enter a valid email address or leave this field empty.'));
     }
     if (delivery && !county.value) {
-      mark(fieldError('checkoutCounty', 'countyError', 'Select a county for the demonstration delivery.'));
+      mark(fieldError('checkoutCounty', 'countyError', 'Select a county for delivery.'));
     }
     if (delivery && !town.value.trim()) {
-      mark(fieldError('checkoutTown', 'townError', 'Enter a town or area for the demonstration delivery.'));
+      mark(fieldError('checkoutTown', 'townError', 'Enter a town or area for delivery.'));
     }
     if (!confirm.checked) {
-      mark(fieldError('checkoutConfirm', 'confirmError', 'Please confirm that you understand this is a demonstration.'));
+      mark(fieldError('checkoutConfirm', 'confirmError', 'Please confirm that you understand this is a preview order.'));
     }
     if (firstInvalid) {
       firstInvalid.focus();
@@ -176,29 +176,29 @@
       '<div class="confirmation-card__main">' +
         '<span class="confirmation-mark">' + DB.icon('check') + '</span>' +
         '<p class="eyebrow">Saved locally</p>' +
-        '<h1 id="confirmTitle">YOUR DEMO ORDER IS SAVED.</h1>' +
-        '<p class="confirmation-lead">Thank you, ' + DB.escapeHtml(order.customer.name) + '. Your sample order has been saved in this browser with a demonstration reference. No payment was taken and no order was sent to DE LA BOSS OUTFITS.</p>' +
-        '<div class="confirmation-reference"><span>Demonstration reference</span><strong>' + DB.escapeHtml(order.reference) + '</strong></div>' +
+        '<h1 id="confirmTitle">YOUR ORDER REQUEST IS SAVED.</h1>' +
+        '<p class="confirmation-lead">Thank you, ' + DB.escapeHtml(order.customer.name) + '. Your order request has been saved in this browser with a reference. No payment was taken and no request was sent to DE LA BOSS OUTFITS. Continue on WhatsApp to send it.</p>' +
+        '<div class="confirmation-reference"><span>Order request reference</span><strong>' + DB.escapeHtml(order.reference) + '</strong></div>' +
         '<div class="confirmation-details">' +
           '<div class="confirmation-detail"><span>Phone</span><strong>' + DB.escapeHtml(order.customer.phone) + '</strong></div>' +
           (order.customer.email ? '<div class="confirmation-detail"><span>Email</span><strong>' + DB.escapeHtml(order.customer.email) + '</strong></div>' : '') +
           '<div class="confirmation-detail"><span>Fulfilment</span><strong>' + (delivery ? 'Delivery preference' : 'Collection preference') + '</strong></div>' +
           '<div class="confirmation-detail"><span>Destination</span><strong>' + DB.escapeHtml(destination) + '</strong></div>' +
           (order.notes ? '<div class="confirmation-detail"><span>Note</span><strong>' + DB.escapeHtml(order.notes) + '</strong></div>' : '') +
-          '<div class="confirmation-detail"><span>Status</span><strong>' + DB.escapeHtml(order.status) + ' · demo</strong></div>' +
+          '<div class="confirmation-detail"><span>Status</span><strong>' + DB.escapeHtml(order.status) + ' · preview</strong></div>' +
           '<div class="confirmation-detail"><span>Created</span><strong>' + DB.formatDateTime(order.createdAt) + '</strong></div>' +
           '<div class="confirmation-detail"><span>Estimated total</span><strong>' + DB.formatKsh(order.total) + '</strong></div>' +
         '</div>' +
         '<div class="confirmation-actions">' +
           '<button class="btn btn--whatsapp" type="button" id="confirmWhatsApp">' + DB.icon('whatsapp') + 'Send order enquiry on WhatsApp</button>' +
           '<a class="btn btn--ghost" href="shop.html">Continue shopping</a>' +
-          '<a class="btn btn--ghost" href="admin.html">View admin demo</a>' +
+          '<a class="btn btn--ghost" href="admin.html">View store dashboard</a>' +
         '</div>' +
-        '<p class="confirmation-demo-note">The WhatsApp button prepares a message for you to review and send yourself. It does not place a real order. Your bag has been cleared because this demonstration order is now saved locally.</p>' +
+        '<p class="confirmation-demo-note">The WhatsApp button prepares a message for you to review and send yourself. It does not place an order. Your bag has been cleared because this order request is now saved locally.</p>' +
       '</div>' +
       '<div class="confirmation-card__aside">' +
         '<div>' +
-          '<h2>Sample pieces</h2>' +
+          '<h2>Order items</h2>' +
           '<div class="confirmation-items">' +
             order.items.map(function (item) {
               return '<div class="confirmation-item">' +
@@ -210,7 +210,7 @@
           '</div>' +
           '<div class="confirmation-total"><span>Estimated total</span><strong>' + DB.formatKsh(order.total) + '</strong></div>' +
         '</div>' +
-        '<p class="confirmation-aside-note">Sample products, prices and stock. Delivery and collection are not arranged by this concept. The store would confirm every real detail directly.</p>' +
+        '<p class="confirmation-aside-note">Prices and stock are preview data. Delivery and collection are not arranged by this preview. The store would confirm every detail directly.</p>' +
       '</div>' +
     '</div>';
   }
@@ -233,7 +233,7 @@
     if (!confirmation) return;
     confirmation.innerHTML = confirmationHtml(order);
     confirmation.hidden = false;
-    document.title = 'Demo Order ' + order.reference + ' | DE LA BOSS OUTFITS Concept';
+    document.title = 'Order Request ' + order.reference + ' | DE LA BOSS OUTFITS';
     const button = byId('confirmWhatsApp');
     if (button) {
       button.addEventListener('click', function () {
@@ -268,7 +268,7 @@
         showConfirmation(savedOrder);
         return;
       }
-      DB.toast('That demonstration order could not be found in this browser.', { type: 'error' });
+      DB.toast('That order request could not be found in this browser.', { type: 'error' });
     }
 
     const layout = byId('checkoutLayout');
@@ -319,7 +319,7 @@
       if (!cartIsValid()) {
         const blocked = byId('checkoutBlocked');
         if (blocked) blocked.hidden = false;
-        DB.toast('Review your bag before placing the demonstration order.', { type: 'error' });
+        DB.toast('Review your bag before placing the order request.', { type: 'error' });
         return;
       }
       if (!validate()) return;
@@ -338,7 +338,7 @@
 
       if (submit) {
         submit.disabled = true;
-        submit.textContent = 'Saving demonstration order…';
+        submit.textContent = 'Saving order request…';
       }
       try {
         const order = DB.createOrder(payload);
@@ -346,7 +346,7 @@
           window.history.replaceState({}, '', 'checkout.html?order=' + encodeURIComponent(order.reference));
         }
         showConfirmation(order);
-        DB.toast('Demonstration order ' + order.reference + ' saved in this browser.', { type: 'success', duration: 6000 });
+        DB.toast('Order request ' + order.reference + ' saved in this browser.', { type: 'success', duration: 6000 });
       } catch (error) {
         if (formError) {
           formError.textContent = error.message;
@@ -355,7 +355,7 @@
         DB.toast(error.message, { type: 'error' });
         if (submit) {
           submit.disabled = false;
-          submit.innerHTML = 'Place demonstration order' +
+          submit.innerHTML = 'Place order request' +
             '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>';
         }
       }

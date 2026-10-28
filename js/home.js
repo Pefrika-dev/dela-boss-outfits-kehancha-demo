@@ -1,4 +1,4 @@
-/* Home page — render the curated sample edit from shared data. */
+/* Home page — render the curated edit from shared data. */
 (function () {
   'use strict';
 
@@ -14,7 +14,7 @@
 
     if (!edit.length) {
       container.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="empty-state__icon">' +
-        window.DelaBoss.icon('shirt') + '</div><h3>No sample products yet</h3><p>The demonstration catalogue is empty. Add products from the admin demo or reset the sample data.</p><a class="btn" href="admin.html#products">Open admin demo</a></div>';
+        window.DelaBoss.icon('shirt') + '</div><h3>No products yet</h3><p>The catalogue is empty. Add products from the store dashboard or reset the preview data.</p><a class="btn" href="admin.html#products">Open store dashboard</a></div>';
       return;
     }
 

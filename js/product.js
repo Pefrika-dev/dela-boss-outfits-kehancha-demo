@@ -1,6 +1,6 @@
 /*
  * DE LA BOSS OUTFITS — product details page
- * Reads ?id=, renders the sample product, handles variant selection,
+ * Reads ?id=, renders the product, handles variant selection,
  * quantity limits, add-to-bag, related pieces and WhatsApp enquiry.
  */
 (function () {
@@ -35,19 +35,19 @@
     const stage = DB.safeImageUrl(images[0]);
     return '<div class="product-gallery">' +
       '<div class="product-gallery__stage">' +
-        '<img id="productStageImage" src="' + DB.escapeAttr(stage) + '" alt="' + DB.escapeAttr(product.name + ' — sample product photograph') + '" width="900" height="1125" fetchpriority="high">' +
+        '<img id="productStageImage" src="' + DB.escapeAttr(stage) + '" alt="' + DB.escapeAttr(product.name + ' — product photograph') + '" width="900" height="1125" fetchpriority="high">' +
       '</div>' +
       (images.length > 1
         ? '<div class="product-gallery__thumbs" role="group" aria-label="Product photographs">' +
             images.map(function (image, index) {
               return '<button class="product-gallery__thumb" type="button" data-gallery-index="' + index + '" aria-current="' + (index === 0 ? 'true' : 'false') + '" aria-label="Show photograph ' + (index + 1) + ' of ' + images.length + '">' +
-                '<img src="' + DB.escapeAttr(DB.safeImageUrl(image)) + '" alt="' + DB.escapeAttr(product.name + ' — sample photograph ' + (index + 1)) + '" width="180" height="225" loading="lazy">' +
+                '<img src="' + DB.escapeAttr(DB.safeImageUrl(image)) + '" alt="' + DB.escapeAttr(product.name + ' — product photograph ' + (index + 1)) + '" width="180" height="225" loading="lazy">' +
               '</button>';
             }).join('') +
           '</div>'
         : '') +
       '<div class="product-gallery__caption">' +
-        '<span>Sample product imagery · Stock photography</span>' +
+        '<span>Preview imagery · Stock photography</span>' +
         '<span>' + images.length + ' view' + (images.length === 1 ? '' : 's') + '</span>' +
       '</div>' +
     '</div>';
@@ -99,14 +99,14 @@
     if (available <= 0) {
       return '<p class="stock-note stock-note--out product-detail__stock" id="stockNote" aria-live="polite">' +
         (Number(product.stock) > 0
-          ? 'All available sample stock is already in your bag.'
-          : 'This sample piece is currently out of stock.') +
+          ? 'All available stock is already in your bag.'
+          : 'This piece is currently out of stock.') +
         '</p>';
     }
     const state = DB.stockState(product);
     const low = available <= Number(DB.getSettings().lowStockThreshold || 0);
     return '<p class="stock-note stock-note--' + (low ? 'low' : 'in') + ' product-detail__stock" id="stockNote" aria-live="polite">' +
-      available + ' sample unit' + (available === 1 ? '' : 's') + ' available to add' +
+      available + ' unit' + (available === 1 ? '' : 's') + ' available to add' +
       (Number(product.stock) !== available ? ' (' + product.stock + ' total, some already in your bag)' : '') +
       '</p>';
   }
@@ -118,10 +118,10 @@
     const details = Array.isArray(product.details) ? product.details : [];
     return galleryHtml(product) +
       '<div class="product-detail">' +
-        '<p class="product-detail__category">' + DB.escapeHtml(product.category || 'Collection') + ' · ' + DB.escapeHtml(product.subcategory || 'Sample piece') + '</p>' +
+        '<p class="product-detail__category">' + DB.escapeHtml(product.category || 'Collection') + ' · ' + DB.escapeHtml(product.subcategory || 'Piece') + '</p>' +
         '<h1 id="productTitle">' + DB.escapeHtml(product.name) + '</h1>' +
         '<div class="product-detail__price">' + DB.priceHtml(product, true) + '</div>' +
-        '<span class="sample-note product-detail__sample">Sample price · Not confirmed shop pricing</span>' +
+        '<span class="sample-note product-detail__sample">Preview catalogue — Price and availability confirmed by the store</span>' +
         '<p class="product-detail__desc">' + DB.escapeHtml(product.description) + '</p>' +
         '<form class="product-form" id="productForm" novalidate>' +
           optionsHtml(product, available) +
@@ -148,33 +148,33 @@
         '</form>' +
         '<div class="product-fineprint">' +
           DB.icon('info') +
-          '<p>This is a sample catalogue piece in an independent website concept. Colour reproduction, fabric, fit and availability are not confirmed. Adding to your bag saves the selection in this browser only.</p>' +
+          '<p>This is a preview catalogue piece. Colour reproduction, fabric, fit and availability are confirmed by the store before purchase. Adding to your bag saves the selection in this browser only.</p>' +
         '</div>' +
         '<div class="product-accordions">' +
           '<details class="product-accordion" open>' +
             '<summary>Product details ' + DB.icon('chevron-down') + '</summary>' +
             '<div class="product-accordion__body">' +
               '<ul>' + details.map(function (item) { return '<li>' + DB.escapeHtml(item) + '</li>'; }).join('') + '</ul>' +
-              (details.length ? '' : '<p>Sample product details have not been specified.</p>') +
+              (details.length ? '' : '<p>Product details are being confirmed with the store.</p>') +
             '</div>' +
           '</details>' +
           '<details class="product-accordion">' +
             '<summary>Sizing &amp; fit ' + DB.icon('chevron-down') + '</summary>' +
             '<div class="product-accordion__body">' +
-              '<p>Available sample options are listed above. Measurements, fit notes and size guidance would be confirmed by the store before a real order. If you are unsure, include your usual size in a WhatsApp enquiry.</p>' +
+              '<p>Available options are listed above. Measurements, fit notes and size guidance are confirmed by the store before an order. If you are unsure, include your usual size in a WhatsApp enquiry.</p>' +
             '</div>' +
           '</details>' +
           '<details class="product-accordion">' +
             '<summary>Ordering &amp; delivery ' + DB.icon('chevron-down') + '</summary>' +
             '<div class="product-accordion__body">' +
-              '<p>Add the piece to your bag, review it, then complete the demonstration checkout. The order is saved in this browser only. No payment is collected and no order is sent to the store.</p>' +
-              '<p style="margin-top:8px">For a real enquiry, use the WhatsApp button above. Delivery coverage, fees and collection arrangements are not confirmed by this concept; they would need to be agreed directly with the store.</p>' +
+              '<p>Add the piece to your bag, review it, then send an order request. The request is saved in this browser only; no payment is collected and nothing is sent to the store until you continue on WhatsApp.</p>' +
+              '<p style="margin-top:8px">For a real enquiry, use the WhatsApp button above. Delivery coverage, fees and collection arrangements are confirmed directly with the store.</p>' +
             '</div>' +
           '</details>' +
           '<details class="product-accordion">' +
             '<summary>Care &amp; materials ' + DB.icon('chevron-down') + '</summary>' +
             '<div class="product-accordion__body">' +
-              '<p>Material composition and care instructions are placeholders in this demonstration. Confirm these details with the store before purchasing.</p>' +
+              '<p>Material and care details are confirmed by the store before purchase.</p>' +
             '</div>' +
           '</details>' +
         '</div>' +
@@ -190,8 +190,8 @@
     if (page) page.hidden = true;
     if (related) related.hidden = true;
     if (missing) missing.hidden = false;
-    document.title = 'Product Not Found | DE LA BOSS OUTFITS Concept';
-    setMeta('meta[name="description"]', 'The requested sample product could not be found in the DE LA BOSS OUTFITS demonstration catalogue.');
+    document.title = 'Product Not Found | DE LA BOSS OUTFITS';
+    setMeta('meta[name="description"]', 'The requested product could not be found in the DE LA BOSS OUTFITS collection.');
     setMeta('meta[name="robots"]', 'noindex, nofollow');
   }
 
@@ -232,7 +232,7 @@
 
   function renderMeta(product) {
     const DB = window.DelaBoss;
-    const title = product.name + ' | DE LA BOSS OUTFITS Concept';
+    const title = product.name + ' | DE LA BOSS OUTFITS';
     const description = product.description.slice(0, 155).trim();
     const image = (product.images && product.images[0]) || 'assets/images/editorial/hero.jpg';
     const url = 'https://dela-boss-outfits-kehancha-demo.netlify.app/product.html?id=' + encodeURIComponent(product.id);
@@ -266,12 +266,12 @@
     if (available <= 0) {
       note.className = 'stock-note stock-note--out product-detail__stock';
       note.textContent = Number(product.stock) > 0
-        ? 'All available sample stock is already in your bag.'
-        : 'This sample piece is currently out of stock.';
+        ? 'All available stock is already in your bag.'
+        : 'This piece is currently out of stock.';
     } else {
       const low = available <= Number(DB.getSettings().lowStockThreshold || 0);
       note.className = 'stock-note stock-note--' + (low ? 'low' : 'in') + ' product-detail__stock';
-      note.textContent = available + ' sample unit' + (available === 1 ? '' : 's') + ' available to add' +
+      note.textContent = available + ' unit' + (available === 1 ? '' : 's') + ' available to add' +
         (Number(product.stock) !== available ? ' (' + product.stock + ' total, some already in your bag)' : '');
     }
     if (qty) {
@@ -295,7 +295,7 @@
         const image = byId('productStageImage');
         if (image && images[index]) {
           image.src = DB.safeImageUrl(images[index]);
-          image.alt = product.name + ' — sample photograph ' + (index + 1);
+          image.alt = product.name + ' — product photograph ' + (index + 1);
         }
         document.querySelectorAll('[data-gallery-index]').forEach(function (other) {
           other.setAttribute('aria-current', other === button ? 'true' : 'false');
@@ -355,7 +355,7 @@
           showMessage(label + ' added to your bag.', false);
           DB.toast(label + ' added to your bag.', { type: 'success' });
           if (result.limited) {
-            DB.toast('Only ' + result.qty + ' sample unit' + (result.qty === 1 ? '' : 's') + ' could be added based on available demonstration stock.', { type: 'info' });
+            DB.toast('Only ' + result.qty + ' unit' + (result.qty === 1 ? '' : 's') + ' could be added based on available stock.', { type: 'info' });
           }
           updateAvailableNote(product);
         } catch (error) {
@@ -375,18 +375,18 @@
         const lines = [
           'Hello ' + settings.storeName + ',',
           '',
-          'I would like to enquire about this sample piece from the website concept demonstration:',
+          'I would like to enquire about this piece from the DE LA BOSS OUTFITS collection:',
           '',
           'Product: ' + product.name,
           'Reference: ' + product.id,
-          'Price: ' + DB.formatKsh(product.price) + ' (sample price)',
+          'Price: ' + DB.formatKsh(product.price),
           'Size: ' + (selectedSize ? selectedSize.value : 'Not selected'),
           'Colour: ' + (selectedColour ? selectedColour.value : 'Not selected'),
           'Quantity: ' + quantity,
           '',
           'Product page: ' + window.location.href,
           '',
-          'This message was prepared by the DE LA BOSS OUTFITS website concept demonstration. I understand that I need to review and send it myself.'
+          'This message was prepared by the DE LA BOSS OUTFITS storefront preview. I understand that I need to review and send it myself.'
         ];
         DB.openWhatsApp(lines.join('\n'));
       });

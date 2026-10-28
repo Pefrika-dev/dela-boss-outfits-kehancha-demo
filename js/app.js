@@ -1,5 +1,5 @@
 /*
- * DE LA BOSS OUTFITS — shared storefront and demonstration data layer
+ * DE LA BOSS OUTFITS — shared storefront and preview data layer
  * Vanilla JavaScript, LocalStorage, no backend.
  */
 (function () {
@@ -270,9 +270,9 @@
     const settings = getSettings();
     const threshold = Math.max(0, Number(settings.lowStockThreshold) || 0);
     const stock = Math.max(0, Number(product && product.stock) || 0);
-    if (stock <= 0) return { key: 'out', label: 'Out of stock', detail: 'This sample piece is currently out of stock.' };
-    if (stock <= threshold) return { key: 'low', label: 'Low stock', detail: stock + ' sample unit' + (stock === 1 ? '' : 's') + ' available.' };
-    return { key: 'in', label: 'In stock', detail: stock + ' sample units available.' };
+    if (stock <= 0) return { key: 'out', label: 'Out of stock', detail: 'This piece is currently out of stock.' };
+    if (stock <= threshold) return { key: 'low', label: 'Low stock', detail: stock + ' unit' + (stock === 1 ? '' : 's') + ' available.' };
+    return { key: 'in', label: 'In stock', detail: stock + ' units available.' };
   }
 
   function badgeHtml(product) {
@@ -316,7 +316,7 @@
     return '<article class="product-card' + (soldOut ? ' is-sold-out' : '') + '" data-product-id="' + escapeAttr(product.id) + '">' +
       '<div class="product-card__media">' +
         '<a href="product.html?id=' + encodeURIComponent(product.id) + '" class="product-card__image-link" aria-label="View ' + escapeAttr(product.name) + '">' +
-          '<img src="' + escapeAttr(image) + '" alt="' + escapeAttr(product.name + ' — sample product photograph') + '" width="900" height="1125" loading="' + (opts.eager ? 'eager' : 'lazy') + '">' +
+          '<img src="' + escapeAttr(image) + '" alt="' + escapeAttr(product.name + ' — product photograph') + '" width="900" height="1125" loading="' + (opts.eager ? 'eager' : 'lazy') + '">' +
         '</a>' +
         badgeHtml(product) +
         '<div class="product-card__actions">' +
@@ -429,7 +429,7 @@
 
   function addToCart(productId, options) {
     const product = getProduct(productId);
-    if (!product) throw new Error('This sample product is no longer available.');
+    if (!product) throw new Error('This product is no longer available.');
     const opts = options || {};
     const size = String(opts.size || '').trim();
     const color = String(opts.color || '').trim();
@@ -438,10 +438,10 @@
     const colors = Array.isArray(product.colors) ? product.colors : [];
     if (sizes.length && !size) throw new Error('Please select a size before adding this piece to your bag.');
     if (colors.length && !color) throw new Error('Please select a colour before adding this piece to your bag.');
-    if (Number(product.stock) <= 0) throw new Error('This sample piece is currently out of stock.');
+    if (Number(product.stock) <= 0) throw new Error('This piece is currently out of stock.');
     const alreadyInCart = cartStockForProduct(productId);
     const available = Math.max(0, Number(product.stock) - alreadyInCart);
-    if (available <= 0) throw new Error('Your bag already contains the available sample stock for this piece.');
+    if (available <= 0) throw new Error('Your bag already contains the available stock for this piece.');
     const limited = qty > available;
     if (limited) qty = available;
     const cart = getCart();
@@ -461,13 +461,13 @@
     const line = cart.find(function (item) { return item.key === key; });
     if (!line) return null;
     const product = getProduct(line.productId);
-    if (!product) throw new Error('This sample product is no longer available.');
+    if (!product) throw new Error('This product is no longer available.');
     const next = Math.max(1, parseInt(qty, 10) || 1);
     const otherQty = cart.reduce(function (total, other) {
       return other.key !== key && other.productId === line.productId ? total + (Number(other.qty) || 0) : total;
     }, 0);
     const max = Math.max(0, (Number(product.stock) || 0) - otherQty);
-    if (next > max) throw new Error('Only ' + max + ' sample unit' + (max === 1 ? '' : 's') + ' can be added for this piece.');
+    if (next > max) throw new Error('Only ' + max + ' unit' + (max === 1 ? '' : 's') + ' can be added for this piece.');
     line.qty = next;
     saveCart(cart);
     return line;
@@ -523,7 +523,7 @@
   function createOrder(payload) {
     const data = payload || {};
     const details = cartDetails();
-    if (!details.length) throw new Error('Your bag is empty. Add a sample piece before checking out.');
+    if (!details.length) throw new Error('Your bag is empty. Add a piece before checking out.');
     const invalid = details.find(function (line) {
       return !line.product || line.unavailable || line.qty > line.maxStock;
     });
@@ -535,7 +535,7 @@
     const overstocked = details.find(function (line) {
       return totalsByProduct[line.product.id] > line.maxStock;
     });
-    if (overstocked) throw new Error('The requested quantity for ' + overstocked.product.name + ' exceeds the available sample stock. Please review your bag.');
+    if (overstocked) throw new Error('The requested quantity for ' + overstocked.product.name + ' exceeds the available stock. Please review your bag.');
     const subtotal = details.reduce(function (total, line) { return total + line.lineTotal; }, 0);
     const settings = getSettings();
     const deliveryFee = data.fulfilment === 'delivery' ? Math.max(0, Number(settings.deliveryFee) || 0) : 0;
@@ -573,15 +573,15 @@
       updatedAt: now,
       inventoryDeducted: false,
       sample: false,
-      source: 'demo-checkout',
+      source: 'preview-checkout',
       statusHistory: [
-        { status: 'Pending', at: now, actor: 'Website demonstration', note: 'Demonstration order saved locally. No message sent to the store.' }
+        { status: 'Pending', at: now, actor: 'Storefront', note: 'Order request saved locally. No message sent to the store.' }
       ]
     };
     const orders = getOrders();
     orders.unshift(order);
-    if (!saveOrders(orders)) throw new Error('The demonstration order could not be saved in this browser.');
-    addActivity('order', 'Demo order ' + reference + ' was created for ' + order.customer.name + '.');
+    if (!saveOrders(orders)) throw new Error('The order request could not be saved in this browser.');
+    addActivity('order', 'Order request ' + reference + ' was created for ' + order.customer.name + '.');
     clearCart();
     return order;
   }
@@ -606,7 +606,7 @@
         return;
       }
       if ((Number(product.stock) || 0) < (Number(item.qty) || 0)) {
-        shortages.push(product.name + ' has only ' + (Number(product.stock) || 0) + ' sample unit(s) available.');
+        shortages.push(product.name + ' has only ' + (Number(product.stock) || 0) + ' unit(s) available.');
       }
     });
     if (shortages.length) {
@@ -622,7 +622,7 @@
 
   function updateOrderStatus(reference, nextStatus, note) {
     if (!ORDER_STATUSES.includes(nextStatus)) {
-      return { ok: false, message: 'Unknown demonstration order status.' };
+      return { ok: false, message: 'Unknown order status.' };
     }
     const orders = getOrders();
     const order = orders.find(function (candidate) { return candidate.reference === reference; });
@@ -634,11 +634,11 @@
       const deduction = deductItems(order.items);
       if (!deduction.ok) return deduction;
       order.inventoryDeducted = true;
-      inventoryMessage = ' Sample inventory was deducted on confirmation.';
+      inventoryMessage = ' Preview inventory was deducted on confirmation.';
     } else if (!shouldHold && order.inventoryDeducted) {
       restockItems(order.items);
       order.inventoryDeducted = false;
-      inventoryMessage = ' Sample inventory was returned to stock.';
+      inventoryMessage = ' Preview inventory was returned to stock.';
     }
     const previous = order.status;
     order.status = nextStatus;
@@ -647,8 +647,8 @@
     order.statusHistory.push({
       status: nextStatus,
       at: order.updatedAt,
-      actor: 'Demo admin',
-      note: String(note || 'Status changed from ' + previous + ' to ' + nextStatus + ' in the demonstration admin.')
+      actor: 'Store dashboard',
+      note: String(note || 'Status changed from ' + previous + ' to ' + nextStatus + ' in the store dashboard.')
     });
     saveOrders(orders);
     addActivity('status', 'Order ' + reference + ' moved from ' + previous + ' to ' + nextStatus + '.');
@@ -661,8 +661,8 @@
     if (!order) return { ok: false, message: 'Order not found.' };
     if (order.inventoryDeducted) restockItems(order.items);
     saveOrders(orders.filter(function (candidate) { return candidate.reference !== reference; }));
-    addActivity('order', 'Demo order ' + reference + ' was deleted' + (order.inventoryDeducted ? ' and its sample inventory was restored.' : '.'));
-    return { ok: true, message: 'Demo order deleted.' + (order.inventoryDeducted ? ' Sample inventory was restored.' : '') };
+    addActivity('order', 'Order request ' + reference + ' was deleted' + (order.inventoryDeducted ? ' and its preview inventory was restored.' : '.'));
+    return { ok: true, message: 'Order request deleted.' + (order.inventoryDeducted ? ' Preview inventory was restored.' : '') };
   }
 
   function orderMetrics() {
@@ -740,14 +740,14 @@
 
   function subscribe(email) {
     const value = String(email || '').trim().toLowerCase();
-    if (!validateEmail(value)) return { ok: false, message: 'Enter a valid email address to join the demo list.' };
+    if (!validateEmail(value)) return { ok: false, message: 'Enter a valid email address to join the updates list.' };
     const subscribers = getSubscribers();
     if (subscribers.some(function (entry) { return entry.email === value; })) {
-      return { ok: false, message: 'This email is already on the demonstration list.' };
+      return { ok: false, message: 'This email is already on the updates list.' };
     }
     subscribers.push({ email: value, createdAt: new Date().toISOString() });
     write(KEYS.subscribers, subscribers);
-    return { ok: true, message: 'You are on the demonstration list. No real emails will be sent.' };
+    return { ok: true, message: 'You are on the updates list. No emails will be sent from this preview.' };
   }
 
   function saveEnquiry(enquiry) {
@@ -793,29 +793,29 @@
       const history = [{
         status: 'Pending',
         at: createdAt,
-        actor: 'Demo data',
-        note: 'Preloaded demonstration order. No real customer or transaction is represented.'
+        actor: 'Preview data',
+        note: 'Preloaded preview order. No real customer or transaction is represented.'
       }];
       if (definition.status !== 'Pending') {
         const confirmedAt = new Date(new Date(createdAt).getTime() + 45 * 60 * 1000).toISOString();
         history.push({
           status: definition.status === 'Cancelled' ? 'Cancelled' : 'Confirmed',
           at: confirmedAt,
-          actor: 'Demo data',
-          note: 'Sample workflow state for dashboard demonstration.'
+          actor: 'Preview data',
+          note: 'Preview workflow state for the store dashboard.'
         });
         if (definition.status === 'Completed') {
           history.push({
             status: 'Processing',
             at: new Date(new Date(createdAt).getTime() + 3 * 60 * 60 * 1000).toISOString(),
-            actor: 'Demo data',
-            note: 'Sample workflow state for dashboard demonstration.'
+            actor: 'Preview data',
+            note: 'Preview workflow state for the store dashboard.'
           });
           history.push({
             status: 'Completed',
             at: new Date(new Date(createdAt).getTime() + 26 * 60 * 60 * 1000).toISOString(),
-            actor: 'Demo data',
-            note: 'Sample workflow state for dashboard demonstration.'
+            actor: 'Preview data',
+            note: 'Preview workflow state for the store dashboard.'
           });
         }
       }
@@ -842,7 +842,7 @@
         updatedAt: history[history.length - 1].at,
         inventoryDeducted: Boolean(definition.inventoryDeducted),
         sample: true,
-        source: 'preloaded-demo',
+        source: 'preloaded-preview',
         statusHistory: history
       });
     });
@@ -868,13 +868,13 @@
         {
           id: 'act-seed-2',
           type: 'catalogue',
-          message: 'Sample catalogue loaded with ' + getProducts().length + ' demonstration products.',
+          message: 'Catalogue loaded with ' + getProducts().length + ' preview products.',
           at: new Date(Date.now() - 8 * 60 * 1000).toISOString()
         },
         {
           id: 'act-seed-1',
           type: 'order',
-          message: 'Three sample orders were preloaded to demonstrate the admin workflow.',
+          message: 'Three preview orders were preloaded to show the dashboard workflow.',
           at: new Date(Date.now() - 9 * 60 * 1000).toISOString()
         }
       ]);
@@ -935,7 +935,7 @@
     const opts = options || {};
     const details = opts.items || cartDetails().map(function (line) {
       return {
-        name: line.product ? line.product.name : 'Unavailable sample product',
+        name: line.product ? line.product.name : 'Unavailable product',
         size: line.size,
         color: line.color,
         qty: line.qty,
@@ -945,7 +945,7 @@
     const lines = [
       'Hello ' + settings.storeName + ',',
       '',
-      'I would like to enquire about the following sample order:',
+      'I would like to enquire about the following order request:',
       ''
     ];
     if (opts.reference) lines.push('Order reference: ' + opts.reference);
@@ -962,7 +962,7 @@
     if (opts.total != null && opts.total !== subtotal) lines.push('Estimated total: ' + formatKsh(opts.total));
     if (opts.customerName) lines.push('Name: ' + opts.customerName);
     lines.push('');
-    lines.push('This message was prepared by the DE LA BOSS OUTFITS website concept demonstration. I understand that I need to review and send it myself.');
+    lines.push('This message was prepared by the DE LA BOSS OUTFITS storefront preview. I understand that I need to review and send it myself.');
     return lines.join('\n');
   }
 
@@ -1007,7 +1007,7 @@
       if (node.hasAttribute('data-phone-label')) node.textContent = settings.phoneSecondary;
     });
     document.querySelectorAll('[data-whatsapp-link]').forEach(function (node) {
-      node.setAttribute('href', whatsappUrl('Hello ' + settings.storeName + ', I would like to make an enquiry from the website concept demonstration.'));
+      node.setAttribute('href', whatsappUrl('Hello ' + settings.storeName + ', I would like to make an enquiry from the storefront preview.'));
       node.setAttribute('target', '_blank');
       node.setAttribute('rel', 'noopener noreferrer');
     });
@@ -1051,7 +1051,7 @@
     dialog.setAttribute('aria-labelledby', 'siteSearchTitle');
     dialog.innerHTML =
       '<button class="dialog__close" type="button" data-close-dialog aria-label="Close search">' + icon('close') + '</button>' +
-      '<p class="eyebrow">Search the sample collection</p>' +
+      '<p class="eyebrow">Search the collection</p>' +
       '<h2 id="siteSearchTitle" class="dialog__title">What are you looking for?</h2>' +
       '<form class="search-dialog__form" action="shop.html" method="get" role="search">' +
         '<label class="visually-hidden" for="globalSearchInput">Search products</label>' +
@@ -1069,7 +1069,7 @@
         '<a href="shop.html?category=Shoes">Shoes</a>' +
         '<a href="shop.html?category=Accessories">Accessories</a>' +
       '</div>' +
-      '<p class="dialog__note">Product names, prices and stock are sample demonstration data.</p>';
+      '<p class="dialog__note">Product names, prices and stock are preview data.</p>';
     document.body.appendChild(dialog);
     const open = function () {
       const drawer = document.getElementById('mobileNavDialog');
@@ -1125,11 +1125,11 @@
       '<div class="nav-drawer__secondary">' +
         '<button type="button" class="text-link" data-open-search>' + icon('search') + ' Search the collection</button>' +
         '<a class="text-link" href="cart.html">' + icon('bag') + ' Shopping bag <span data-cart-count>0</span></a>' +
-        '<a class="text-link" href="admin.html">' + icon('grid') + ' Admin demo</a>' +
+        '<a class="text-link" href="admin.html">' + icon('grid') + ' Store dashboard</a>' +
       '</div>' +
       '<div class="nav-drawer__footer">' +
         '<p>Kehancha · Migori County</p>' +
-        '<p class="small-note">Independent website concept. Sample product data.</p>' +
+        '<p class="small-note">Storefront preview · Illustrative catalogue.</p>' +
       '</div>';
     document.body.appendChild(drawer);
     const open = function () {
@@ -1177,7 +1177,7 @@
   function openQuickView(productId) {
     const product = getProduct(productId);
     if (!product) {
-      toast('This sample product could not be found.', { type: 'error' });
+      toast('This product could not be found.', { type: 'error' });
       return;
     }
     const existing = document.getElementById('quickViewDialog');
@@ -1206,9 +1206,9 @@
     dialog.innerHTML =
       '<button class="dialog__close" type="button" data-close-dialog aria-label="Close quick view">' + icon('close') + '</button>' +
       '<div class="quickview__grid">' +
-        '<div class="quickview__media"><img src="' + escapeAttr(safeImageUrl((product.images && product.images[0]) || '')) + '" alt="' + escapeAttr(product.name + ' — sample product photograph') + '" width="900" height="1125"></div>' +
+        '<div class="quickview__media"><img src="' + escapeAttr(safeImageUrl((product.images && product.images[0]) || '')) + '" alt="' + escapeAttr(product.name + ' — product photograph') + '" width="900" height="1125"></div>' +
         '<div class="quickview__content">' +
-          '<p class="eyebrow">' + escapeHtml(product.category) + ' · ' + escapeHtml(product.subcategory || 'Sample') + '</p>' +
+          '<p class="eyebrow">' + escapeHtml(product.category) + ' · ' + escapeHtml(product.subcategory || 'Piece') + '</p>' +
           '<h2 id="quickViewTitle" class="quickview__title">' + escapeHtml(product.name) + '</h2>' +
           '<div class="quickview__price">' + priceHtml(product, true) + '</div>' +
           '<p class="quickview__desc">' + escapeHtml(product.description) + '</p>' +
@@ -1220,7 +1220,7 @@
             '<button class="btn btn--dark btn--full" type="submit"' + (soldOut ? ' disabled' : '') + '>' + (soldOut ? 'Sold out' : 'Add to bag') + '</button>' +
             '<a class="btn btn--ghost btn--full" href="product.html?id=' + encodeURIComponent(product.id) + '">View full details</a>' +
           '</form>' +
-          '<p class="dialog__note">Sample product · Price and availability are for demonstration only.</p>' +
+          '<p class="dialog__note">Preview catalogue — Price and availability are confirmed by the store.</p>' +
         '</div>' +
       '</div>';
     document.body.appendChild(dialog);
@@ -1274,7 +1274,7 @@
         dialog.close();
         toast('Added ' + result.qty + ' × ' + product.name + ' to your bag.', { type: 'success' });
         if (result.limited) {
-          toast('Only ' + result.qty + ' sample unit(s) could be added based on the demonstration stock.', { type: 'info' });
+          toast('Only ' + result.qty + ' unit(s) could be added based on available stock.', { type: 'info' });
         }
       } catch (error) {
         errorBox.textContent = error.message;
