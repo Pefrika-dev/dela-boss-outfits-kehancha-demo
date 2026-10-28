@@ -88,6 +88,7 @@
             '</label>';
           }).join('') +
         '</div>' +
+        '<p class="option-hint"><a href="size-guide.html">Not sure of your size? Open the size guide</a></p>' +
       '</fieldset>';
     }
 

@@ -24,6 +24,49 @@
   <script src="js/products.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/home.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ClothingStore",
+        "@id": "https://dela-boss-outfits-kehancha-demo.netlify.app/#store",
+        "name": "DE LA BOSS OUTFITS",
+        "url": "https://dela-boss-outfits-kehancha-demo.netlify.app/",
+        "image": "https://dela-boss-outfits-kehancha-demo.netlify.app/assets/images/editorial/hero.jpg",
+        "description": "Clothing, footwear and accessories in Kehancha, Migori County, Kenya. This listing describes a storefront proposal preview prepared for the business and is not the official store website.",
+        "telephone": "+254758102552",
+        "currenciesAccepted": "KES",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kehancha",
+          "addressRegion": "Migori County",
+          "addressCountry": "KE"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Migori County, Kenya"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dela-boss-outfits-kehancha-demo.netlify.app/#website",
+        "url": "https://dela-boss-outfits-kehancha-demo.netlify.app/",
+        "name": "DE LA BOSS OUTFITS",
+        "inLanguage": "en-KE",
+        "publisher": { "@id": "https://dela-boss-outfits-kehancha-demo.netlify.app/#store" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://dela-boss-outfits-kehancha-demo.netlify.app/shop.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -345,6 +388,13 @@
       <div class="footer__demo">
         <strong>Proposal preview.</strong> Prepared by Thomas Hondo Chacha for DE LA BOSS OUTFITS. This is not the official website of DE LA BOSS OUTFITS and has not been approved or launched by the business. Product names, prices, stock, imagery and order requests are illustrative until the owner supplies and approves final content. <a href="about.html#about-preview" style="text-decoration:underline;text-underline-offset:3px;color:rgba(246,241,233,.75)">Read the preview notes.</a>
       </div>
+
+      <nav class="footer__help" aria-label="Help and policies">
+        <a href="faq.html">FAQ</a>
+        <a href="size-guide.html">Size guide</a>
+        <a href="returns.html">Returns &amp; exchanges</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
 
       <div class="footer__bottom">
         <div class="footer__legal">

@@ -60,10 +60,14 @@ Upload the whole folder to Netlify, Cloudflare Pages, GitHub Pages, Vercel or or
 | `checkout.html` | Demonstration checkout and order confirmation |
 | `about.html` | Concept explanation, supplied business details and demo boundaries |
 | `contact.html` | Supplied contact details, WhatsApp links and local-only enquiry form |
+| `faq.html` | Ordering, delivery, payment, sizing and data questions, with `FAQPage` schema |
+| `size-guide.html` | Standard body measurements for clothing and footwear conversions |
+| `returns.html` | Proposed returns and exchanges policy, clearly marked as awaiting owner approval |
+| `privacy.html` | What the preview stores in the browser, what it never collects, and how to clear it |
 | `admin.html` | Demonstration admin dashboard |
 | `404.html` | Custom not-found page |
 
-Every public page includes unique title/description metadata, canonical URLs on the live Netlify domain, Open Graph tags and `index, follow`. Transactional/demo-only pages (`cart.html`, `checkout.html`, `product.html`, `admin.html`, `404.html`) stay `noindex, nofollow`. `robots.txt` and `sitemap.xml` are included at the project root.
+Every public page includes unique title/description metadata, canonical URLs on the live Netlify domain, Open Graph tags and `index, follow`. `index.html` carries `ClothingStore` and `WebSite` structured data, `faq.html` carries `FAQPage` and `BreadcrumbList`, and the remaining information pages carry `BreadcrumbList`. Transactional/demo-only pages (`cart.html`, `checkout.html`, `product.html`, `admin.html`, `404.html`) stay `noindex, nofollow`. `robots.txt` and `sitemap.xml` are included at the project root; the sitemap lists the eight indexable pages.
 
 ---
 

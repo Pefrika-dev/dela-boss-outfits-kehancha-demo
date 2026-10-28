@@ -1,0 +1,511 @@
+/* ==========================================================================
+   DE LA BOSS OUTFITS — information pages
+   Shared styles for FAQ, size guide, returns and privacy pages.
+   ========================================================================== */
+
+.info-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.info-layout--aside {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.info-content {
+  max-width: 860px;
+  min-width: 0;
+}
+
+/* Sticky in-page navigation
+   -------------------------------------------------------------------------- */
+
+.info-toc {
+  display: none;
+}
+
+.info-toc__title {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.info-toc__list {
+  display: grid;
+  gap: 10px;
+  padding-left: 0;
+  border-left: 1px solid var(--line);
+  list-style: none;
+}
+
+.info-toc__list li {
+  margin-left: -1px;
+}
+
+.info-toc__list a {
+  display: block;
+  padding-left: 14px;
+  border-left: 1px solid transparent;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color var(--speed) var(--ease), border-color var(--speed) var(--ease);
+}
+
+.info-toc__list a:hover,
+.info-toc__list a:focus-visible {
+  border-left-color: var(--accent);
+  color: var(--ink);
+}
+
+/* Content blocks
+   -------------------------------------------------------------------------- */
+
+.info-block {
+  max-width: 760px;
+}
+
+.info-block + .info-block {
+  margin-top: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.info-block h2 {
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.info-block h3 {
+  margin-top: 26px;
+  color: var(--ink-3);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.info-block h2 + p,
+.info-block h2 + ul,
+.info-block h2 + ol,
+.info-block h3 + p,
+.info-block h3 + ul,
+.info-block h3 + ol {
+  margin-top: 12px;
+}
+
+.info-block p,
+.info-block li {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.info-block p + p,
+.info-block p + ul,
+.info-block p + ol,
+.info-block ul + p,
+.info-block ol + p {
+  margin-top: 12px;
+}
+
+.info-block ul,
+.info-block ol {
+  display: grid;
+  gap: 9px;
+  padding-left: 20px;
+}
+
+.info-block li::marker {
+  color: var(--accent);
+}
+
+.info-block strong {
+  color: var(--ink);
+}
+
+.info-block a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.info-block a:hover {
+  color: var(--accent-dark);
+}
+
+.info-lede {
+  max-width: 620px;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Callouts
+   -------------------------------------------------------------------------- */
+
+.info-callout {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--paper-2);
+}
+
+.info-callout + .info-callout {
+  margin-top: 14px;
+}
+
+.info-callout p,
+.info-callout li {
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.info-callout p + p {
+  margin-top: 10px;
+}
+
+.info-callout strong {
+  color: var(--ink);
+}
+
+.info-callout--muted {
+  border-left-color: var(--gold);
+  background: transparent;
+}
+
+.info-callout--danger {
+  border-left-color: var(--danger);
+}
+
+/* Status pills
+   -------------------------------------------------------------------------- */
+
+.status-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-pill--proposed {
+  background: rgba(155, 106, 25, 0.13);
+  color: var(--warning);
+}
+
+.status-pill--confirmed {
+  background: rgba(47, 107, 81, 0.13);
+  color: var(--success);
+}
+
+.status-pill--pending {
+  background: rgba(23, 21, 18, 0.08);
+  color: var(--muted);
+}
+
+/* FAQ accordion
+   -------------------------------------------------------------------------- */
+
+.faq-group + .faq-group {
+  margin-top: clamp(2.2rem, 4vw, 3rem);
+}
+
+.faq-group__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.faq-group__title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.faq-item {
+  border-top: 1px solid var(--line);
+}
+
+.faq-item:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  list-style: none;
+  transition: color var(--speed) var(--ease);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  flex: none;
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(2px);
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-item summary:hover {
+  color: var(--accent);
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.faq-item__body {
+  max-width: 680px;
+  padding-bottom: 20px;
+}
+
+.faq-item__body p,
+.faq-item__body li {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.faq-item__body p + p,
+.faq-item__body p + ul {
+  margin-top: 10px;
+}
+
+.faq-item__body ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.faq-item__body li::marker {
+  color: var(--accent);
+}
+
+.faq-item__body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Tables
+   -------------------------------------------------------------------------- */
+
+.table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--white);
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.data-table caption {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.data-table th,
+.data-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table thead th {
+  background: var(--paper-2);
+  color: var(--ink-3);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: rgba(23, 21, 18, 0.02);
+}
+
+.data-table td {
+  color: var(--muted);
+}
+
+.data-table td:first-child {
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.data-table td .status-pill {
+  white-space: nowrap;
+}
+
+.data-table .unit {
+  display: block;
+  color: var(--muted-light);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Measure steps
+   -------------------------------------------------------------------------- */
+
+.measure-grid {
+  display: grid;
+  gap: 1px;
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  background: var(--line);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.measure-step {
+  padding: 20px;
+  background: var(--white);
+}
+
+.measure-step__index {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.measure-step h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.measure-step p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+/* Next-step panel shared by the policy pages
+   -------------------------------------------------------------------------- */
+
+.info-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 22px;
+  margin-top: clamp(2.2rem, 4vw, 3rem);
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+}
+
+.info-cta p {
+  flex: 1 1 260px;
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.info-cta strong {
+  color: var(--ink);
+}
+
+@media (min-width: 900px) {
+  .info-layout--aside {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  .info-toc {
+    position: sticky;
+    top: calc(var(--header-h) + 28px);
+    display: block;
+  }
+}
+
+@media (max-width: 760px) {
+  .info-block p,
+  .info-block li,
+  .faq-item__body p,
+  .faq-item__body li {
+    font-size: 12.5px;
+  }
+
+  .faq-item summary {
+    padding: 16px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .info-toc__list a,
+  .faq-item summary {
+    transition: none;
+  }
+}
