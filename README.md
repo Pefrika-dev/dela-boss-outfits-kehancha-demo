@@ -138,9 +138,9 @@ Prices, descriptions, colours, sizes, stock figures and imagery are invented or 
 
 Three clearly labelled sample orders are seeded on first load:
 
-- `DB-DEMO-1001`
-- `DB-DEMO-1002`
-- `DB-DEMO-1003`
+- `DB-PRV-1001`
+- `DB-PRV-1002`
+- `DB-PRV-1003`
 
 These exist only to demonstrate the order dashboard. They are fictional.
 
